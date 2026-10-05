@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Dashboard Pendaftar Mahasiswa Baru 2026/2027</title>
+
 <style>
 :root {
   --primary:#071A9C;
@@ -18,9 +19,16 @@
   --success:#071A9C;
   --warning:#D71920;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
+
+* {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
   margin:0;
   font-family:Inter,"Segoe UI",Arial,sans-serif;
   color:var(--ink);
@@ -28,255 +36,2080 @@ body{
     radial-gradient(circle at top right, rgba(18,57,232,.12), transparent 24rem),
     linear-gradient(180deg,#F8FAFF 0%,var(--bg) 100%);
 }
-.hero{
-  background:linear-gradient(135deg,#071A9C 0%,#1239E8 58%,#D71920 100%);
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  background:linear-gradient(
+    135deg,
+    #071A9C 0%,
+    #1239E8 58%,
+    #D71920 100%
+  );
   color:#fff;
   padding:34px 5vw 66px;
   position:relative;
   overflow:hidden;
 }
-.hero:before,.hero:after{
-  content:"";position:absolute;border-radius:999px;background:rgba(255,255,255,.07);
+
+.hero:before,
+.hero:after {
+  content:"";
+  position:absolute;
+  border-radius:999px;
+  background:rgba(255,255,255,.07);
 }
-.hero:before{width:290px;height:290px;right:-90px;top:-110px}
-.hero:after{width:170px;height:170px;right:180px;bottom:-100px}
-.hero-inner{max-width:1460px;margin:auto;position:relative;z-index:1}
-.eyebrow{font-size:12px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;opacity:.8}
-.hero h1{font-size:clamp(26px,3vw,44px);margin:7px 0 8px;letter-spacing:-.8px}
-.hero p{margin:0;opacity:.86;font-size:14px}
-.container{max-width:1460px;margin:auto;padding:0 24px 30px}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:-36px;position:relative;z-index:2}
-.card{
+
+.hero:before {
+  width:290px;
+  height:290px;
+  right:-90px;
+  top:-110px;
+}
+
+.hero:after {
+  width:170px;
+  height:170px;
+  right:180px;
+  bottom:-100px;
+}
+
+.hero-inner {
+  max-width:1460px;
+  margin:auto;
+  position:relative;
+  z-index:1;
+}
+
+.eyebrow {
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1.6px;
+  text-transform:uppercase;
+  opacity:.8;
+}
+
+.hero h1 {
+  font-size:clamp(26px,3vw,44px);
+  margin:7px 0 8px;
+  letter-spacing:-.8px;
+}
+
+.hero p {
+  margin:0;
+  opacity:.86;
+  font-size:14px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+  max-width:1460px;
+  margin:auto;
+  padding:0 24px 30px;
+}
+
+/* =========================
+   KPI
+========================= */
+
+.kpis {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+  margin-top:-36px;
+  position:relative;
+  z-index:2;
+}
+
+.card {
   background:rgba(255,255,255,.96);
   border:1px solid var(--line);
   border-radius:20px;
   box-shadow:0 14px 35px rgba(7,26,156,.10);
 }
-.kpi{padding:20px 21px;position:relative;overflow:hidden}
-.kpi:after{content:"";position:absolute;right:-20px;top:-20px;width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,#EEF2FF,#FFF3B0)}
-.kpi-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:800;position:relative;z-index:1}
-.kpi-value{font-size:34px;font-weight:850;color:var(--primary);margin:6px 0 2px;position:relative;z-index:1}
-.kpi-note{font-size:12px;color:var(--muted);position:relative;z-index:1}
-.main-grid{display:grid;grid-template-columns:1.45fr .8fr;gap:18px;margin-top:18px}
-.panel{padding:22px}
-.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:18px}
-.panel h2{font-size:18px;margin:0 0 4px}
-.panel p{font-size:12.5px;color:var(--muted);margin:0}
-.chip{font-size:11px;font-weight:800;background:#FFD338;color:#071A9C;padding:7px 10px;border-radius:999px;white-space:nowrap;box-shadow:0 3px 10px rgba(255,211,56,.28)}
-#barChart{width:100%;min-height:410px}
-.legend{display:flex;gap:15px;flex-wrap:wrap;margin-top:8px;color:var(--muted);font-size:12px}
-.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px}
-.donut-area{display:grid;place-items:center;min-height:285px;position:relative}
-.donut{
-  width:225px;height:225px;border-radius:50%;
-  background:conic-gradient(#071A9C 0 61.538%, #F2D7DA 61.538% 100%);
-  box-shadow:inset 0 0 0 1px rgba(7,26,156,.07);
+
+.kpi {
+  padding:20px 21px;
+  position:relative;
+  overflow:hidden;
+}
+
+.kpi:after {
+  content:"";
+  position:absolute;
+  right:-20px;
+  top:-20px;
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#EEF2FF,#FFF3B0);
+}
+
+.kpi-label {
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  color:var(--muted);
+  font-weight:800;
+  position:relative;
+  z-index:1;
+}
+
+.kpi-value {
+  font-size:34px;
+  font-weight:850;
+  color:var(--primary);
+  margin:6px 0 2px;
+  position:relative;
+  z-index:1;
+}
+
+.kpi-note {
+  font-size:12px;
+  color:var(--muted);
+  position:relative;
+  z-index:1;
+}
+
+/* =========================
+   MAIN GRID
+========================= */
+
+.main-grid {
+  display:grid;
+  grid-template-columns:1.45fr .8fr;
+  gap:18px;
+  margin-top:18px;
+}
+
+.panel {
+  padding:22px;
+}
+
+.panel-head {
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:16px;
+  margin-bottom:18px;
+}
+
+.panel h2 {
+  font-size:18px;
+  margin:0 0 4px;
+}
+
+.panel p {
+  font-size:12.5px;
+  color:var(--muted);
+  margin:0;
+}
+
+.chip {
+  font-size:11px;
+  font-weight:800;
+  background:#FFD338;
+  color:#071A9C;
+  padding:7px 10px;
+  border-radius:999px;
+  white-space:nowrap;
+  box-shadow:0 3px 10px rgba(255,211,56,.28);
+}
+
+#barChart {
+  width:100%;
+  min-height:410px;
+}
+
+.legend {
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:8px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.legend i {
+  display:inline-block;
+  width:10px;
+  height:10px;
+  border-radius:3px;
+  margin-right:5px;
+}
+
+/* =========================
+   DONUT
+========================= */
+
+.donut-area {
+  display:grid;
+  place-items:center;
+  min-height:285px;
   position:relative;
 }
-.donut:after{content:"";position:absolute;inset:43px;background:#fff;border-radius:50%;box-shadow:0 8px 25px rgba(7,26,156,.10)}
-.donut-text{position:absolute;text-align:center;z-index:2}
-.donut-text strong{display:block;color:var(--primary);font-size:38px}
-.donut-text span{font-size:12px;color:var(--muted)}
-.mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
-.mini{background:#FAFBFF;border:1px solid var(--line);padding:12px;border-radius:13px}
-.mini b{display:block;color:var(--primary);font-size:18px}
-.mini span{font-size:11px;color:var(--muted)}
-.notice{margin-top:18px;padding:13px 15px;border:1px solid #F0D4D7;background:#FFF8F8;color:#8B1E2D;border-radius:14px;font-size:12.5px;line-height:1.55}
-.table-card{margin-top:18px;overflow:hidden}
-.table-top{padding:21px 22px 12px}
-.table-top h2{font-size:18px;margin:0 0 4px}
-.table-top p{margin:0;color:var(--muted);font-size:12.5px}
-.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
-.controls input,.controls select{
-  border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 12px;font:inherit;color:var(--ink);outline:none;
-}
-.controls input:focus,.controls select:focus{border-color:var(--secondary);box-shadow:0 0 0 3px rgba(18,57,232,.14)}
-.controls input{min-width:320px;flex:1}
-.controls button{
-  border:0;background:#D71920;color:#fff;border-radius:11px;padding:10px 15px;font-weight:800;cursor:pointer;box-shadow:0 6px 16px rgba(215,25,32,.18);
-}
-.controls button:hover{background:#1239E8}
-.table-wrap{overflow:auto;max-height:650px;border-top:1px solid var(--line)}
-table{width:100%;border-collapse:collapse;font-size:12.5px}
-thead th{
-  position:sticky;top:0;background:#EEF2FF;color:#071A9C;padding:12px 11px;text-align:left;
-  border-bottom:1px solid var(--line);z-index:1;white-space:nowrap;
-}
-tbody td{padding:11px;border-bottom:1px solid #E8ECF6;vertical-align:top}
-tbody tr:hover td{background:#FAFBFF}
-.num{text-align:right;font-variant-numeric:tabular-nums}
-.school{font-weight:750;color:#17255B;min-width:220px}
-.rank{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--primary-soft);color:var(--primary);font-weight:800}
-.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-weight:800;font-size:11px}
-.full{background:#E9F5EF;color:#2F7D5B} .partial{background:#FFF3E4;color:#9A6929}
-.mahasiswa{min-width:260px;max-width:420px;line-height:1.45;color:#56617A}
-.empty{color:#A3AABD}
-.footer{text-align:center;color:#727A8E;font-size:11.5px;padding:24px 0}
-@media(max-width:980px){.kpis{grid-template-columns:repeat(2,1fr)}.main-grid{grid-template-columns:1fr}}
-@media(max-width:560px){.container{padding:0 12px 22px}.hero{padding:28px 16px 60px}.kpis{gap:10px}.kpi{padding:15px}.kpi-value{font-size:28px}.controls input{min-width:100%}}
-@media print{body{background:#fff}.hero{padding-bottom:45px}.card{box-shadow:none}.controls{display:none}.table-wrap{max-height:none;overflow:visible}}
-</style>
-</head>
-<body>
-<header class="hero">
-  <div class="hero-inner">
-    <div class="eyebrow">PMB 2026 • Rekapitulasi Global</div>
-    <h1>Dashboard Pendaftar Mahasiswa Baru 2026/2027</h1>
-    <p>Data Rekap Per 28 Agustus 2026</p>
-  </div>
-</header>
 
-<main class="container">
-  <section class="kpis">
-    <div class="card kpi"><div class="kpi-label">Total Pendaftar</div><div class="kpi-value">234</div></div>
-    <div class="card kpi"><div class="kpi-label">Sudah DU</div><div class="kpi-value">144</div><div class="kpi-note">61.5% conversion rate</div></div>
-    <div class="card kpi"><div class="kpi-label">Belum DU</div><div class="kpi-value">90</div><div class="kpi-note">38.5% dari total pendaftar</div></div>
-    <div class="card kpi"><div class="kpi-label">Asal Sekolah</div><div class="kpi-value">59</div></div>
-  </section>
+.donut {
+  width:225px;
+  height:225px;
+  border-radius:50%;
 
-  
+  background:
+    conic-gradient(
+      #071A9C 0 64.0%,
+      #F2D7DA 64.0% 100%
+    );
 
-  <section class="main-grid">
-    <div class="card panel">
-      <div class="panel-head">
-        <div><h2>Top 10 Sekolah Penyumbang Pendaftar</h2><p>Batang menunjukkan Sudah DU dan Belum DU; angka di kanan adalah total pendaftar.</p></div>
-        <div class="chip">TOP 10</div>
-      </div>
-      <div id="barChart"></div>
-      <div class="legend">
-        <span><i style="background:#071A9C"></i>Sudah DU</span>
-        <span><i style="background:#D71920"></i>Belum DU</span>
-      </div>
-    </div>
+  box-shadow:
+    inset 0 0 0 1px rgba(7,26,156,.07);
 
-    <div class="card panel">
-      <div class="panel-head">
-        <div><h2>Conversion Daftar Ulang</h2><p>Persentase pendaftar yang sudah melakukan DU.</p></div>
-        <div class="chip">STATUS DU</div>
-      </div>
-      <div class="donut-area">
-        <div class="donut"></div>
-        <div class="donut-text"><strong>61.5%</strong><span>Sudah DU</span></div>
-      </div>
-      <div class="mini-stats">
-        <div class="mini"><b>24</b><span>Sekolah dengan DU 100%</span></div>
-        <div class="mini"><b>35</b><span>Sekolah masih ada Belum DU</span></div>
-        <div class="mini"><b>4.0</b><span>Rata-rata pendaftar/sekolah</span></div>
-        <div class="mini"><b>90</b><span>Potensi follow-up DU</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="card table-card">
-    <div class="table-top">
-      <h2>Detail Rekapitulasi Sekolah</h2>
-      <p>Cari sekolah, nama BK, nomor telepon, atau nama mahasiswa. Klik filter untuk melihat kelompok tertentu.</p>
-      <div class="controls">
-        <input id="search" type="search" placeholder="Cari sekolah, BK, telepon, atau mahasiswa...">
-        <select id="filter">
-          <option value="all">Semua data</option>
-          <option value="top10">Top 10 pendaftar</option>
-          <option value="full">DU 100%</option>
-          <option value="pending">Masih ada Belum DU</option>
-          <option value="mahasiswa">Ada data mahasiswa</option>
-        </select>
-        <button onclick="window.print()">Cetak / Simpan PDF</button>
-      </div>
-    </div>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>#</th><th>Nama Sekolah</th><th class="num">Pendaftar</th><th class="num">Sudah DU</th><th class="num">Belum DU</th><th class="num">Rate DU</th><th>Nama BK</th><th>No. Telp</th><th>Nama Mahasiswa</th></tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
-    </div>
-  </section>
-
-  <div class="footer">Dashboard PMB 2026 • Tema UDB Biru • Merah • Emas</div>
-</main>
-
-<script>
-const data = [{"no": 1, "school": "MAN 1 SURAKARTA", "total": 9, "du": 6, "belum": 3, "bk": "IBU ANA", "phone": "81804447501", "mahasiswa": ""}, {"no": 2, "school": "MAN 2 SURAKARTA", "total": 9, "du": 5, "belum": 4, "bk": "IBU NURUL", "phone": "81329144400", "mahasiswa": ""}, {"no": 3, "school": "SMA AL FIRDAUS", "total": 3, "du": 3, "belum": 0, "bk": "IBU FAT", "phone": "81548760438", "mahasiswa": "RAFEL THORIQ ABRAR, WIRA DUTA ARIYANTO PUTRA, KADZIYA YUMNA SHAULA"}, {"no": 4, "school": "SMA ABBS SURAKARTA", "total": 6, "du": 3, "belum": 3, "bk": "MISS HANA", "phone": "82314761414", "mahasiswa": ""}, {"no": 5, "school": "SMA AL ISLAM 1 SURAKARTA", "total": 8, "du": 4, "belum": 4, "bk": "IBU APRIL", "phone": "82226252614", "mahasiswa": "MU'AMMAR RIDHWAN AL KHOIRI, TERY SAPUTRA , ZAIDAN ROZZAQ ROIF, Zulfa Kartikasari, MUHAMMAD DUJANA, RAFI PANDU RAMADHANU, ZAHRA RISQI SRI KUNCARA, SALSABILLA DWI AURORA"}, {"no": 6, "school": "SMA AL-AZHAR SYIFA BUDI SOLO", "total": 2, "du": 2, "belum": 0, "bk": "IBU VIVIN", "phone": "8562720184", "mahasiswa": "MAGDA SERAFIN AZIZAH, Rozeen Moammar Maruf"}, {"no": 7, "school": "SMA BATIK 1 SURAKARTA", "total": 4, "du": 3, "belum": 1, "bk": "BP. MULYONO", "phone": "81329019236", "mahasiswa": ""}, {"no": 8, "school": "SMA IT NUR HIDAYAH", "total": 2, "du": 1, "belum": 1, "bk": "IBU FITRI", "phone": "82243456992", "mahasiswa": ""}, {"no": 9, "school": "SMA 1 Salatiga", "total": 1, "du": 0, "belum": 1, "bk": "Kunjungan Sekolah", "phone": "", "mahasiswa": ""}, {"no": 10, "school": "SMA 2 Salatiga", "total": 3, "du": 1, "belum": 2, "bk": "IBU LINDA", "phone": "8156575881", "mahasiswa": ""}, {"no": 11, "school": "SMAN 1 KLATEN", "total": 2, "du": 0, "belum": 2, "bk": "Kunjungan Sekolah", "phone": "", "mahasiswa": "ISTI NAFISA PUTRI, VANESA PUTRI FELICIA"}, {"no": 12, "school": "SMAN 1 SUKAMARA", "total": 1, "du": 1, "belum": 0, "bk": "", "phone": "", "mahasiswa": "MELLY PUSPITASARI"}, {"no": 13, "school": "SMAN 1 SUKOHARJO", "total": 19, "du": 12, "belum": 7, "bk": "IBU NURUL", "phone": "85741485107", "mahasiswa": ""}, {"no": 14, "school": "SMAN 1 SURAKARTA", "total": 4, "du": 1, "belum": 3, "bk": "", "phone": "", "mahasiswa": ""}, {"no": 15, "school": "SMAN 1 WONOGIRI", "total": 2, "du": 1, "belum": 1, "bk": "IBU WAHYU", "phone": "81327217474", "mahasiswa": "SAMSUL MA'ARIF, Vanya Nasya kalila"}, {"no": 16, "school": "SMAN 2 SRAGEN", "total": 5, "du": 4, "belum": 1, "bk": "Kunjungan Sekolah", "phone": "", "mahasiswa": ""}, {"no": 17, "school": "SMAN 2 SURAKARTA", "total": 10, "du": 5, "belum": 5, "bk": "PAK SRIYONO", "phone": "85878286190", "mahasiswa": ""}, {"no": 18, "school": "SMAN 2 WONOGIRI", "total": 3, "du": 2, "belum": 1, "bk": "IBU SURYANI BK", "phone": "Holly Anggie Puspanjali", "mahasiswa": ""}, {"no": 19, "school": "SMAN 3 SRAGEN", "total": 3, "du": 1, "belum": 2, "bk": "Kunjungan Sekolah", "phone": "", "mahasiswa": "AINA SHOFIYA ERPRIYONA, CHIQUITA NALA ALFI SYAHRIN, ARDINA EKA RAHMAWATI"}, {"no": 20, "school": "SMAN 3 SURAKARTA", "total": 3, "du": 3, "belum": 0, "bk": "Kunjungan Sekolah", "phone": "", "mahasiswa": "Davin Giring Arezky, THRISTAN PUTRA PRATAMA ERDITYA, lorentius oktafviano yoga prakoso"}, {"no": 21, "school": "SMAN 4 SURAKARTA", "total": 7, "du": 5, "belum": 2, "bk": "IBU VERO", "phone": "81329192211", "mahasiswa": ""}, {"no": 22, "school": "SMAN 5 SURAKARTA", "total": 8, "du": 2, "belum": 6, "bk": "Kunjungan Sekolah", "phone": "", "mahasiswa": ""}, {"no": 23, "school": "SMAN 6 SURAKARTA", "total": 22, "du": 14, "belum": 8, "bk": "BU INDRASWARI", "phone": "81393680055", "mahasiswa": ""}, {"no": 24, "school": "SMAN 7 SURAKARTA", "total": 15, "du": 8, "belum": 7, "bk": "BU INDAH", "phone": "8122597622", "mahasiswa": ""}, {"no": 25, "school": "SMKN 6 SURAKARTA", "total": 25, "du": 18, "belum": 7, "bk": "IBU INDAR", "phone": "81392510909", "mahasiswa": ""}, {"no": 26, "school": "SMKN 9 SURAKARTA", "total": 11, "du": 7, "belum": 4, "bk": "BP.SAMIYANTO", "phone": "", "mahasiswa": ""}, {"no": 27, "school": "MAN WONOGIRI", "total": 1, "du": 1, "belum": 0, "bk": "kak nafi @udb.admission", "phone": "", "mahasiswa": "Hanifa Destiana Kusuma Putri"}, {"no": 28, "school": "PONDOK PESANTREN HPAIC MERAPI", "total": 1, "du": 1, "belum": 0, "bk": "kak nafi @udb.admission", "phone": "", "mahasiswa": "Nabilah Muthoharoh"}, {"no": 29, "school": "RPL (PRATAMA MULIA)", "total": 1, "du": 1, "belum": 0, "bk": "BU SRI SUMARLINDA", "phone": "", "mahasiswa": ""}, {"no": 30, "school": "SMA MOJOGEDANG", "total": 5, "du": 5, "belum": 0, "bk": "TIKTOK ADMISSION", "phone": "", "mahasiswa": ""}, {"no": 31, "school": "SMA MUHAMMADIYAH 5 JATEN KARANGANYAR", "total": 1, "du": 1, "belum": 0, "bk": "Wa @udb.admission", "phone": "", "mahasiswa": ""}, {"no": 32, "school": "SMA XAVERIUS PRINGSEWU", "total": 1, "du": 1, "belum": 0, "bk": "kak nafi @udb.admission", "phone": "", "mahasiswa": "Gracia Yodeta Dian Artika"}, {"no": 33, "school": "SMAN 1 ANDONG", "total": 1, "du": 1, "belum": 0, "bk": "Tiktok udb.admission", "phone": "", "mahasiswa": "ANNISA FAJAR YUNIANTI"}, {"no": 34, "school": "SMAN 1 BULU", "total": 1, "du": 1, "belum": 0, "bk": "Tiktok udb.admission", "phone": "", "mahasiswa": "ATHIYYAH GHAITSA SARAH"}, {"no": 35, "school": "SMAN 1 MOJOLABAN", "total": 1, "du": 0, "belum": 1, "bk": "Tiktok udb.admission", "phone": "", "mahasiswa": "Ratri Dyah Ayu Puspaningrum"}, {"no": 36, "school": "SMAN 1 NGUTER", "total": 3, "du": 1, "belum": 2, "bk": "@udb.admission", "phone": "", "mahasiswa": "Ahmad Fauzan Arrafi'i,BAGUS YOGI PRATAMA, SANDY ARIF SUGIRI"}, {"no": 37, "school": "SMAN 1 SAMBUNGMACAN", "total": 2, "du": 1, "belum": 1, "bk": "Instagram @udb.admission", "phone": "", "mahasiswa": "FLORA LEVITA FALENSIA, SENDYKA PRATAMA"}, {"no": 38, "school": "SMAN 1 SEPUTIH AGUNG", "total": 1, "du": 1, "belum": 0, "bk": "Instagram udb.admission", "phone": "", "mahasiswa": "chelsea fresilia rahmadhani"}, {"no": 40, "school": "SMAN 1 WAINGAPU", "total": 1, "du": 0, "belum": 1, "bk": "udb.admission", "phone": "", "mahasiswa": "Yosefina Bunga Taimenas Krowin"}, {"no": 41, "school": "SMAN 2 KUMAI", "total": 1, "du": 1, "belum": 0, "bk": "Instagram", "phone": "", "mahasiswa": "SINDY AULIA SARI"}, {"no": 44, "school": "SMAS BHAKTYARSA MAUMERE", "total": 1, "du": 0, "belum": 1, "bk": "Tiktok Kak Nafi @udb.admission", "phone": "", "mahasiswa": "Maria Susanti Demaya"}, {"no": 45, "school": "SMAS KRSITEN KALAM KUDUS SUKOHARJO", "total": 1, "du": 1, "belum": 0, "bk": "", "phone": "", "mahasiswa": "DANIEL CHRISTIAN LIE"}, {"no": 46, "school": "SMK GANESHA TAMA BOYOLALI", "total": 1, "du": 1, "belum": 0, "bk": "kak nafi @udb.admission", "phone": "", "mahasiswa": "Dimas Fitrah Aditya"}, {"no": 47, "school": "SMK MUHAMMADIYAH DELANGGU", "total": 1, "du": 1, "belum": 0, "bk": "Tiktok Kak Nafi @udb.admission", "phone": "", "mahasiswa": ""}, {"no": 48, "school": "SMK PGRI PEDAN", "total": 1, "du": 1, "belum": 0, "bk": "Tiktok Kak Nafi @udb.admission", "phone": "", "mahasiswa": ""}, {"no": 49, "school": "SMKN 1 MONDOKAN", "total": 1, "du": 1, "belum": 0, "bk": "Tiktok Kak Nafi @udb.admission", "phone": "", "mahasiswa": ""}, {"no": 50, "school": "SMKN 1 PRACIMANTORO", "total": 1, "du": 1, "belum": 0, "bk": "Instagram", "phone": "", "mahasiswa": ""}, {"no": 51, "school": "SMKN 1 SAMBI", "total": 1, "du": 0, "belum": 1, "bk": "Tiktok Kak Nafi @udb.admission", "phone": "", "mahasiswa": "ARROZIKIN KHOLIFAH"}, {"no": 52, "school": "SMKN 1 SURAKARTA", "total": 1, "du": 0, "belum": 1, "bk": "kak nafi @udb.admission", "phone": "", "mahasiswa": "TALITHA LUTFI ZAHRALIANA"}, {"no": 53, "school": "SMKN 12 KESEHATAN MERAUKE", "total": 1, "du": 1, "belum": 0, "bk": "Instagram udb.admission", "phone": "", "mahasiswa": "Jullysa Evangline Patricia Rantung"}, {"no": 54, "school": "SMKS PGRI 1 BALARAJA", "total": 1, "du": 1, "belum": 0, "bk": "kak nafi @udb.admission", "phone": "", "mahasiswa": "SEPTINA RAMADHANIA PUSPITASARI"}, {"no": 55, "school": "SMK KESEHATAN DONOHUDAN", "total": 1, "du": 0, "belum": 1, "bk": "Bu Sri Sumarlinda", "phone": "", "mahasiswa": "YESI LELY PUSPITASARI"}, {"no": 56, "school": "SMK MANDALA BHAKTI SURAKARTA", "total": 1, "du": 1, "belum": 0, "bk": "Ibu Sri Sumarlinda", "phone": "", "mahasiswa": "SHESILYA RIZCIKA PUTRI"}, {"no": 57, "school": "SMKN 1 PURWODADI", "total": 1, "du": 0, "belum": 1, "bk": "Ibu Sri Sumarlinda", "phone": "", "mahasiswa": "APRILIYA WULAN DANI"}, {"no": 58, "school": "UNS", "total": 1, "du": 1, "belum": 0, "bk": "BU. SRI SUMARLINDA", "phone": "", "mahasiswa": ""}, {"no": 59, "school": "SMA MTA SURAKARTA", "total": 3, "du": 1, "belum": 2, "bk": "", "phone": "", "mahasiswa": ""}, {"no": 60, "school": "SMAN 1 BOYOLALI", "total": 2, "du": 1, "belum": 1, "bk": "", "phone": "", "mahasiswa": ""}, {"no": 61, "school": "SMAN 1 KARANGANYAR", "total": 5, "du": 4, "belum": 1, "bk": "", "phone": "", "mahasiswa": ""}, {"no": 62, "school": "SMA ASSALAAM", "total": 1, "du": 0, "belum": 1, "bk": "MORIT", "phone": "85728877418", "mahasiswa": ""}];
-
-function esc(v) {
-  return String(v ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  position:relative;
 }
 
-function sortedData() {
-  return [...data].sort((a,b)=>b.total-a.total || a.school.localeCompare(b.school));
+.donut:after {
+  content:"";
+  position:absolute;
+  inset:43px;
+  background:#fff;
+  border-radius:50%;
+  box-shadow:0 8px 25px rgba(7,26,156,.10);
 }
 
-function renderChart() {
-  const items = sortedData().slice(0,10);
-  const el = document.getElementById("barChart");
-  const W = Math.max(820, el.clientWidth || 820), H = 410;
-  const left=260,right=52,top=18,bottom=28;
-  const plotW=W-left-right, rowH=(H-top-bottom)/items.length;
-  const max=Math.max(...items.map(d=>d.total),1);
-  let svg=`<svg viewBox="0 0 ${W} ${H}" width="100%" height="100%" aria-label="Top 10 sekolah">`;
+.donut-text {
+  position:absolute;
+  text-align:center;
+  z-index:2;
+}
 
-  for(let i=0;i<=5;i++) {
-    const x=left+plotW*i/5, val=Math.round(max*i/5);
-    svg+=`<line x1="${x}" y1="${top}" x2="${x}" y2="${H-bottom}" stroke="#E2E7F2"/>`;
-    svg+=`<text x="${x}" y="${H-7}" text-anchor="middle" fill="#7A8398" font-size="10.5">${val}</text>`;
+.donut-text strong {
+  display:block;
+  color:var(--primary);
+  font-size:38px;
+}
+
+.donut-text span {
+  font-size:12px;
+  color:var(--muted);
+}
+
+.mini-stats {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:8px;
+}
+
+.mini {
+  background:#FAFBFF;
+  border:1px solid var(--line);
+  padding:12px;
+  border-radius:13px;
+}
+
+.mini b {
+  display:block;
+  color:var(--primary);
+  font-size:18px;
+}
+
+.mini span {
+  font-size:11px;
+  color:var(--muted);
+}
+
+.notice {
+  margin-top:18px;
+  padding:13px 15px;
+  border:1px solid #F0D4D7;
+  background:#FFF8F8;
+  color:#8B1E2D;
+  border-radius:14px;
+  font-size:12.5px;
+  line-height:1.55;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table-card {
+  margin-top:18px;
+  overflow:hidden;
+}
+
+.table-top {
+  padding:21px 22px 12px;
+}
+
+.table-top h2 {
+  font-size:18px;
+  margin:0 0 4px;
+}
+
+.table-top p {
+  margin:0;
+  color:var(--muted);
+  font-size:12.5px;
+}
+
+.controls {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:16px;
+}
+
+.controls input,
+.controls select {
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:11px;
+  padding:10px 12px;
+  font:inherit;
+  color:var(--ink);
+  outline:none;
+}
+
+.controls input:focus,
+.controls select:focus {
+  border-color:var(--secondary);
+  box-shadow:0 0 0 3px rgba(18,57,232,.14);
+}
+
+.controls input {
+  min-width:320px;
+  flex:1;
+}
+
+.controls button {
+  border:0;
+  background:#D71920;
+  color:#fff;
+  border-radius:11px;
+  padding:10px 15px;
+  font-weight:800;
+  cursor:pointer;
+  box-shadow:0 6px 16px rgba(215,25,32,.18);
+}
+
+.controls button:hover {
+  background:#1239E8;
+}
+
+.table-wrap {
+  overflow:auto;
+  max-height:650px;
+  border-top:1px solid var(--line);
+}
+
+table {
+  width:100%;
+  border-collapse:collapse;
+  font-size:12.5px;
+}
+
+thead th {
+  position:sticky;
+  top:0;
+  background:#EEF2FF;
+  color:#071A9C;
+  padding:12px 11px;
+  text-align:left;
+  border-bottom:1px solid var(--line);
+  z-index:1;
+  white-space:nowrap;
+}
+
+tbody td {
+  padding:11px;
+  border-bottom:1px solid #E8ECF6;
+  vertical-align:top;
+}
+
+tbody tr:hover td {
+  background:#FAFBFF;
+}
+
+.num {
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+}
+
+.school {
+  font-weight:750;
+  color:#17255B;
+  min-width:220px;
+}
+
+.rank {
+  display:inline-grid;
+  place-items:center;
+  width:28px;
+  height:28px;
+  border-radius:8px;
+  background:var(--primary-soft);
+  color:var(--primary);
+  font-weight:800;
+}
+
+.badge {
+  display:inline-block;
+  padding:4px 8px;
+  border-radius:999px;
+  font-weight:800;
+  font-size:11px;
+}
+
+.full {
+  background:#E9F5EF;
+  color:#2F7D5B;
+}
+
+.partial {
+  background:#FFF3E4;
+  color:#9A6929;
+}
+
+.mahasiswa {
+  min-width:260px;
+  max-width:420px;
+  line-height:1.45;
+  color:#56617A;
+}
+
+.empty {
+  color:#A3AABD;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  text-align:center;
+  color:#727A8E;
+  font-size:11.5px;
+  padding:24px 0;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:980px) {
+
+  .kpis {
+    grid-template-columns:repeat(2,1fr);
   }
 
-  items.forEach((d,i)=>{
-    const y=top+i*rowH+5, h=Math.max(12,rowH-10);
-    const totalW=plotW*d.total/max;
-    const duW=plotW*d.du/max;
-    const belumW=plotW*d.belum/max;
-    const label=d.school.length>34?d.school.slice(0,33)+"…":d.school;
-    svg+=`<text x="${left-12}" y="${y+h/2+4}" text-anchor="end" fill="#27345A" font-size="11.5" font-weight="600">${esc(label)}</text>`;
-    svg+=`<rect x="${left}" y="${y}" width="${totalW}" height="${h}" rx="6" fill="#E7EAF3"/>`;
-    svg+=`<rect x="${left}" y="${y}" width="${duW}" height="${h}" rx="6" fill="#071A9C"/>`;
-    svg+=`<rect x="${left+duW}" y="${y}" width="${belumW}" height="${h}" rx="6" fill="#D71920"/>`;
-    svg+=`<text x="${left+totalW+8}" y="${y+h/2+4}" fill="#071A9C" font-size="11" font-weight="800">${d.total}</text>`;
-    svg+=`<title>${esc(d.school)} | Pendaftar: ${d.total} | Sudah DU: ${d.du} | Belum DU: ${d.belum}</title>`;
-  });
-  svg+="</svg>";
-  el.innerHTML=svg;
+  .main-grid {
+    grid-template-columns:1fr;
+  }
 }
+
+@media(max-width:560px) {
+
+  .container {
+    padding:0 12px 22px;
+  }
+
+  .hero {
+    padding:28px 16px 60px;
+  }
+
+  .kpis {
+    gap:10px;
+  }
+
+  .kpi {
+    padding:15px;
+  }
+
+  .kpi-value {
+    font-size:28px;
+  }
+
+  .controls input {
+    min-width:100%;
+  }
+}
+
+/* =========================
+   PRINT
+========================= */
+
+@media print {
+
+  body {
+    background:#fff;
+  }
+
+  .hero {
+    padding-bottom:45px;
+  }
+
+  .card {
+    box-shadow:none;
+  }
+
+  .controls {
+    display:none;
+  }
+
+  .table-wrap {
+    max-height:none;
+    overflow:visible;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+====================================================== -->
+
+<header class="hero">
+
+  <div class="hero-inner">
+
+    <div class="eyebrow">
+      PMB 2026 • Rekapitulasi Global
+    </div>
+
+    <h1>
+      Dashboard Pendaftar Mahasiswa Baru 2026/2027
+    </h1>
+
+    <p>
+      Data Rekapitulasi Terbaru • Total 236 Pendaftar
+    </p>
+
+  </div>
+
+</header>
+
+
+<main class="container">
+
+<!-- =====================================================
+     KPI
+====================================================== -->
+
+<section class="kpis">
+
+  <div class="card kpi">
+
+    <div class="kpi-label">
+      Total Pendaftar
+    </div>
+
+    <div class="kpi-value">
+      236
+    </div>
+
+    <div class="kpi-note">
+      Total seluruh pendaftar
+    </div>
+
+  </div>
+
+
+  <div class="card kpi">
+
+    <div class="kpi-label">
+      Sudah DU
+    </div>
+
+    <div class="kpi-value">
+      151
+    </div>
+
+    <div class="kpi-note">
+      64.0% conversion rate
+    </div>
+
+  </div>
+
+
+  <div class="card kpi">
+
+    <div class="kpi-label">
+      Belum DU
+    </div>
+
+    <div class="kpi-value">
+      85
+    </div>
+
+    <div class="kpi-note">
+      36.0% dari total pendaftar
+    </div>
+
+  </div>
+
+
+  <div class="card kpi">
+
+    <div class="kpi-label">
+      Asal Sekolah
+    </div>
+
+    <div class="kpi-value">
+      60
+    </div>
+
+    <div class="kpi-note">
+      Sekolah asal pendaftar
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     CHART + DONUT
+====================================================== -->
+
+<section class="main-grid">
+
+<!-- TOP 10 -->
+
+<div class="card panel">
+
+  <div class="panel-head">
+
+    <div>
+
+      <h2>
+        Top 10 Sekolah Penyumbang Pendaftar
+      </h2>
+
+      <p>
+        Batang menunjukkan Sudah DU dan Belum DU;
+        angka di kanan adalah total pendaftar berdasarkan data terbaru.
+      </p>
+
+    </div>
+
+    <div class="chip">
+      TOP 10
+    </div>
+
+  </div>
+
+  <div id="barChart"></div>
+
+  <div class="legend">
+
+    <span>
+      <i style="background:#071A9C"></i>
+      Sudah DU
+    </span>
+
+    <span>
+      <i style="background:#D71920"></i>
+      Belum DU
+    </span>
+
+  </div>
+
+</div>
+
+
+<!-- CONVERSION -->
+
+<div class="card panel">
+
+  <div class="panel-head">
+
+    <div>
+
+      <h2>
+        Conversion Daftar Ulang
+      </h2>
+
+      <p>
+        Persentase pendaftar yang sudah melakukan DU.
+      </p>
+
+    </div>
+
+    <div class="chip">
+      STATUS DU
+    </div>
+
+  </div>
+
+
+  <div class="donut-area">
+
+    <div class="donut"></div>
+
+    <div class="donut-text">
+
+      <strong>
+        64.0%
+      </strong>
+
+      <span>
+        Sudah DU
+      </span>
+
+    </div>
+
+  </div>
+
+
+  <div class="mini-stats">
+
+    <div class="mini">
+
+      <b>
+        29
+      </b>
+
+      <span>
+        Sekolah dengan DU 100%
+      </span>
+
+    </div>
+
+
+    <div class="mini">
+
+      <b>
+        31
+      </b>
+
+      <span>
+        Sekolah masih ada Belum DU
+      </span>
+
+    </div>
+
+
+    <div class="mini">
+
+      <b>
+        3.9
+      </b>
+
+      <span>
+        Rata-rata pendaftar/sekolah
+      </span>
+
+    </div>
+
+
+    <div class="mini">
+
+      <b>
+        85
+      </b>
+
+      <span>
+        Potensi follow-up DU
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     TABLE
+====================================================== -->
+
+<section class="card table-card">
+
+  <div class="table-top">
+
+    <h2>
+      Detail Rekapitulasi Sekolah
+    </h2>
+
+    <p>
+      Cari sekolah, nama BK, nomor telepon, atau nama mahasiswa.
+      Klik filter untuk melihat kelompok tertentu.
+    </p>
+
+
+    <div class="controls">
+
+      <input
+        id="search"
+        type="search"
+        placeholder="Cari sekolah, BK, telepon, atau mahasiswa..."
+      >
+
+
+      <select id="filter">
+
+        <option value="all">
+          Semua data
+        </option>
+
+        <option value="top10">
+          Top 10 pendaftar
+        </option>
+
+        <option value="full">
+          DU 100%
+        </option>
+
+        <option value="pending">
+          Masih ada Belum DU
+        </option>
+
+        <option value="mahasiswa">
+          Ada data mahasiswa
+        </option>
+
+      </select>
+
+
+      <button onclick="window.print()">
+        Cetak / Simpan PDF
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="table-wrap">
+
+    <table>
+
+      <thead>
+
+        <tr>
+
+          <th>
+            #
+          </th>
+
+          <th>
+            Nama Sekolah
+          </th>
+
+          <th class="num">
+            Pendaftar
+          </th>
+
+          <th class="num">
+            Sudah DU
+          </th>
+
+          <th class="num">
+            Belum DU
+          </th>
+
+          <th class="num">
+            Rate DU
+          </th>
+
+          <th>
+            Nama BK
+          </th>
+
+          <th>
+            No. Telp
+          </th>
+
+          <th>
+            Nama Mahasiswa
+          </th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody id="tbody"></tbody>
+
+    </table>
+
+  </div>
+
+</section>
+
+
+<div class="footer">
+  Dashboard PMB 2026 • Tema UDB Biru • Merah • Emas
+</div>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   DATA PENDAFTAR TERBARU
+====================================================== */
+
+const data = [
+
+  {
+    no:1,
+    school:"MAN 1 SURAKARTA",
+    total:9,
+    du:6,
+    belum:3,
+    bk:"IBU ANA",
+    phone:"81804447501",
+    mahasiswa:""
+  },
+
+  {
+    no:2,
+    school:"MAN 2 SURAKARTA",
+    total:9,
+    du:5,
+    belum:4,
+    bk:"IBU NURUL",
+    phone:"81329144400",
+    mahasiswa:""
+  },
+
+  {
+    no:3,
+    school:"SMA AL FIRDAUS",
+    total:3,
+    du:3,
+    belum:0,
+    bk:"IBU FAT",
+    phone:"81548760438",
+    mahasiswa:"RAFEL THORIQ ABRAR, WIRA DUTA ARIYANTO PUTRA, KADZIYA YUMNA SHAULA"
+  },
+
+  {
+    no:4,
+    school:"SMA ABBS SURAKARTA",
+    total:6,
+    du:3,
+    belum:3,
+    bk:"MISS HANA",
+    phone:"82314761414",
+    mahasiswa:""
+  },
+
+  {
+    no:5,
+    school:"SMA AL ISLAM 1 SURAKARTA",
+    total:8,
+    du:4,
+    belum:4,
+    bk:"IBU APRIL",
+    phone:"82226252614",
+    mahasiswa:"MU'AMMAR RIDHWAN AL KHOIRI, TERY SAPUTRA, ZAIDAN ROZZAQ ROIF, Zulfa Kartikasari, MUHAMMAD DUJANA, RAFI PANDU RAMADHANU, ZAHRA RISQI SRI KUNCARA, SALSABILLA DWI AURORA"
+  },
+
+  {
+    no:6,
+    school:"SMA AL-AZHAR SYIFA BUDI SOLO",
+    total:2,
+    du:2,
+    belum:0,
+    bk:"IBU VIVIN",
+    phone:"8562720184",
+    mahasiswa:"MAGDA SERAFIN AZIZAH, Rozeen Moammar Maruf"
+  },
+
+  {
+    no:7,
+    school:"SMA BATIK 1 SURAKARTA",
+    total:4,
+    du:3,
+    belum:1,
+    bk:"BP. MULYONO",
+    phone:"81329019236",
+    mahasiswa:""
+  },
+
+  {
+    no:8,
+    school:"SMA IT NUR HIDAYAH",
+    total:2,
+    du:1,
+    belum:1,
+    bk:"IBU FITRI",
+    phone:"82243456992",
+    mahasiswa:""
+  },
+
+  {
+    no:9,
+    school:"SMA 1 Salatiga",
+    total:1,
+    du:0,
+    belum:1,
+    bk:"Kunjungan Sekolah",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:10,
+    school:"SMA 2 Salatiga",
+    total:3,
+    du:1,
+    belum:2,
+    bk:"IBU LINDA",
+    phone:"8156575881",
+    mahasiswa:""
+  },
+
+  {
+    no:11,
+    school:"SMAN 1 KLATEN",
+    total:2,
+    du:0,
+    belum:2,
+    bk:"Kunjungan Sekolah",
+    phone:"",
+    mahasiswa:"ISTI NAFISA PUTRI, VANESA PUTRI FELICIA"
+  },
+
+  {
+    no:12,
+    school:"SMAN 1 SUKAMARA",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"",
+    phone:"",
+    mahasiswa:"MELLY PUSPITASARI"
+  },
+
+  {
+    no:13,
+    school:"SMAN 1 SUKOHARJO",
+    total:19,
+    du:12,
+    belum:7,
+    bk:"IBU NURUL",
+    phone:"85741485107",
+    mahasiswa:""
+  },
+
+  {
+    no:14,
+    school:"SMAN 1 SURAKARTA",
+    total:4,
+    du:1,
+    belum:3,
+    bk:"",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:15,
+    school:"SMAN 1 WONOGIRI",
+    total:2,
+    du:1,
+    belum:1,
+    bk:"IBU WAHYU",
+    phone:"81327217474",
+    mahasiswa:"SAMSUL MA'ARIF, Vanya Nasya kalila"
+  },
+
+  {
+    no:16,
+    school:"SMAN 2 SRAGEN",
+    total:5,
+    du:4,
+    belum:1,
+    bk:"Kunjungan Sekolah",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:17,
+    school:"SMAN 2 SURAKARTA",
+    total:10,
+    du:5,
+    belum:5,
+    bk:"PAK SRIYONO",
+    phone:"85878286190",
+    mahasiswa:""
+  },
+
+  {
+    no:18,
+    school:"SMAN 2 WONOGIRI",
+    total:3,
+    du:2,
+    belum:1,
+    bk:"IBU SURYANI BK",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:19,
+    school:"SMAN 3 SRAGEN",
+    total:3,
+    du:1,
+    belum:2,
+    bk:"Kunjungan Sekolah",
+    phone:"",
+    mahasiswa:"AINA SHOFIYA ERPRIYONA, CHIQUITA NALA ALFI SYAHRIN, ARDINA EKA RAHMAWATI"
+  },
+
+  {
+    no:20,
+    school:"SMAN 3 SURAKARTA",
+    total:3,
+    du:3,
+    belum:0,
+    bk:"Kunjungan Sekolah",
+    phone:"",
+    mahasiswa:"Davin Giring Arezky, THRISTAN PUTRA PRATAMA ERDITYA, lorentius oktafviano yoga prakoso"
+  },
+
+  {
+    no:21,
+    school:"SMAN 4 SURAKARTA",
+    total:7,
+    du:5,
+    belum:2,
+    bk:"IBU VERO",
+    phone:"81329192211",
+    mahasiswa:""
+  },
+
+  {
+    no:22,
+    school:"SMAN 5 SURAKARTA",
+    total:8,
+    du:2,
+    belum:6,
+    bk:"Kunjungan Sekolah",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:23,
+    school:"SMAN 6 SURAKARTA",
+    total:22,
+    du:14,
+    belum:8,
+    bk:"BU INDRASWARI",
+    phone:"81393680055",
+    mahasiswa:""
+  },
+
+  {
+    no:24,
+    school:"SMAN 7 SURAKARTA",
+    total:15,
+    du:8,
+    belum:7,
+    bk:"BU INDAH",
+    phone:"8122597622",
+    mahasiswa:""
+  },
+
+  {
+    no:25,
+    school:"SMKN 6 SURAKARTA",
+    total:25,
+    du:18,
+    belum:7,
+    bk:"IBU INDAR",
+    phone:"81392510909",
+    mahasiswa:""
+  },
+
+  {
+    no:26,
+    school:"SMKN 9 SURAKARTA",
+    total:11,
+    du:7,
+    belum:4,
+    bk:"BP.SAMIYANTO",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:27,
+    school:"MAN WONOGIRI",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"kak nafi @udb.admission",
+    phone:"",
+    mahasiswa:"Hanifa Destiana Kusuma Putri"
+  },
+
+  {
+    no:28,
+    school:"PONDOK PESANTREN HPAIC MERAPI",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"kak nafi @udb.admission",
+    phone:"",
+    mahasiswa:"Nabilah Muthoharoh"
+  },
+
+  {
+    no:29,
+    school:"RPL (PRATAMA MULIA)",
+    total:2,
+    du:2,
+    belum:0,
+    bk:"BU SRI SUMARLINDA",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:30,
+    school:"SMA MOJOGEDANG",
+    total:5,
+    du:5,
+    belum:0,
+    bk:"TIKTOK ADMISSION",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:31,
+    school:"SMA MUHAMMADIYAH 5 JATEN KARANGANYAR",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"Wa @udb.admission",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:32,
+    school:"SMA XAVERIUS PRINGSEWU",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"kak nafi @udb.admission",
+    phone:"",
+    mahasiswa:"Gracia Yodeta Dian Artika"
+  },
+
+  {
+    no:33,
+    school:"SMAN 1 ANDONG",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"Tiktok udb.admission",
+    phone:"",
+    mahasiswa:"ANNISA FAJAR YUNIANTI"
+  },
+
+  {
+    no:34,
+    school:"SMAN 1 BULU",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"Tiktok udb.admission",
+    phone:"",
+    mahasiswa:"ATHIYYAH GHAITSA SARAH"
+  },
+
+  {
+    no:35,
+    school:"SMAN 1 MOJOLABAN",
+    total:1,
+    du:0,
+    belum:1,
+    bk:"Tiktok udb.admission",
+    phone:"",
+    mahasiswa:"Ratri Dyah Ayu Puspaningrum"
+  },
+
+  {
+    no:36,
+    school:"SMAN 1 NGUTER",
+    total:3,
+    du:2,
+    belum:1,
+    bk:"@udb.admission",
+    phone:"",
+    mahasiswa:"Ahmad Fauzan Arrafi'i, BAGUS YOGI PRATAMA, SANDY ARIF SUGIRI"
+  },
+
+  {
+    no:37,
+    school:"SMAN 1 SAMBUNGMACAN",
+    total:2,
+    du:1,
+    belum:1,
+    bk:"Instagram @udb.admission",
+    phone:"",
+    mahasiswa:"FLORA LEVITA FALENSIA, SENDYKA PRATAMA"
+  },
+
+  {
+    no:38,
+    school:"SMAN 1 SEPUTIH AGUNG",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"Instagram udb.admission",
+    phone:"",
+    mahasiswa:"chelsea fresilia rahmadhani"
+  },
+
+  {
+    no:40,
+    school:"SMAN 1 WAINGAPU",
+    total:1,
+    du:0,
+    belum:1,
+    bk:"udb.admission",
+    phone:"",
+    mahasiswa:"Yosefina Bunga Taimenas Krowin"
+  },
+
+  {
+    no:41,
+    school:"SMAN 2 KUMAI",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"Instagram",
+    phone:"",
+    mahasiswa:"SINDY AULIA SARI"
+  },
+
+  {
+    no:44,
+    school:"SMAS BHAKTYARSA MAUMERE",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"Tiktok Kak Nafi @udb.admission",
+    phone:"",
+    mahasiswa:"Maria Susanti Demaya"
+  },
+
+  {
+    no:45,
+    school:"SMAS KRSITEN KALAM KUDUS SUKOHARJO",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"",
+    phone:"",
+    mahasiswa:"DANIEL CHRISTIAN LIE"
+  },
+
+  {
+    no:46,
+    school:"SMK GANESHA TAMA BOYOLALI",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"kak nafi @udb.admission",
+    phone:"",
+    mahasiswa:"Dimas Fitrah Aditya"
+  },
+
+  {
+    no:47,
+    school:"SMK MUHAMMADIYAH DELANGGU",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"Tiktok Kak Nafi @udb.admission",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:48,
+    school:"SMK PGRI PEDAN",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"Tiktok Kak Nafi @udb.admission",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:49,
+    school:"SMKN 1 MONDOKAN",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"Tiktok Kak Nafi @udb.admission",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:50,
+    school:"SMKN 1 PRACIMANTORO",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"Instagram",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:51,
+    school:"SMKN 1 SAMBI",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"Tiktok Kak Nafi @udb.admission",
+    phone:"",
+    mahasiswa:"ARROZIKIN KHOLIFAH"
+  },
+
+  {
+    no:52,
+    school:"SMKN 1 SURAKARTA",
+    total:1,
+    du:0,
+    belum:1,
+    bk:"kak nafi @udb.admission",
+    phone:"",
+    mahasiswa:"TALITHA LUTFI ZAHRALIANA"
+  },
+
+  {
+    no:53,
+    school:"SMKN 12 KESEHATAN MERAUKE",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"Instagram udb.admission",
+    phone:"",
+    mahasiswa:"Jullysa Evangline Patricia Rantung"
+  },
+
+  {
+    no:54,
+    school:"SMKS PGRI 1 BALARAJA",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"kak nafi @udb.admission",
+    phone:"",
+    mahasiswa:"SEPTINA RAMADHANIA PUSPITASARI"
+  },
+
+  {
+    no:55,
+    school:"SMK KESEHATAN DONOHUDAN",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"Bu Sri Sumarlinda",
+    phone:"",
+    mahasiswa:"YESI LELY PUSPITASARI"
+  },
+
+  {
+    no:56,
+    school:"SMK MANDALA BHAKTI SURAKARTA",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"Ibu Sri Sumarlinda",
+    phone:"",
+    mahasiswa:"SHESILYA RIZCIKA PUTRI"
+  },
+
+  {
+    no:57,
+    school:"SMKN 1 PURWODADI",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"Ibu Sri Sumarlinda",
+    phone:"",
+    mahasiswa:"APRILIYA WULAN DANI"
+  },
+
+  {
+    no:58,
+    school:"UNS",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"BU. SRI SUMARLINDA",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:59,
+    school:"SMA MTA SURAKARTA",
+    total:3,
+    du:1,
+    belum:2,
+    bk:"",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:60,
+    school:"SMAN 1 BOYOLALI",
+    total:2,
+    du:1,
+    belum:1,
+    bk:"",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:61,
+    school:"SMAN 1 KARANGANYAR",
+    total:5,
+    du:4,
+    belum:1,
+    bk:"",
+    phone:"",
+    mahasiswa:""
+  },
+
+  {
+    no:62,
+    school:"SMA ASSALAAM",
+    total:1,
+    du:0,
+    belum:1,
+    bk:"MORIT",
+    phone:"85728877418",
+    mahasiswa:""
+  },
+
+  {
+    no:63,
+    school:"SMK Muh. Karanganyar",
+    total:1,
+    du:1,
+    belum:0,
+    bk:"",
+    phone:"",
+    mahasiswa:""
+  }
+
+];
+
+
+/* =====================================================
+   ESCAPE HTML
+====================================================== */
+
+function esc(v) {
+
+  return String(v ?? "")
+    .replace(
+      /[&<>"']/g,
+
+      c => ({
+        '&':'&amp;',
+        '<':'&lt;',
+        '>':'&gt;',
+        '"':'&quot;',
+        "'":'&#39;'
+      }[c])
+    );
+
+}
+
+
+/* =====================================================
+   SORT DATA
+====================================================== */
+
+function sortedData() {
+
+  return [...data].sort(
+    (a,b) =>
+      b.total-a.total ||
+      a.school.localeCompare(b.school)
+  );
+
+}
+
+
+/* =====================================================
+   BAR CHART
+====================================================== */
+
+function renderChart() {
+
+  const items =
+    sortedData().slice(0,10);
+
+  const el =
+    document.getElementById("barChart");
+
+  const W =
+    Math.max(820,el.clientWidth || 820);
+
+  const H = 410;
+
+  const left = 260;
+  const right = 52;
+  const top = 18;
+  const bottom = 28;
+
+  const plotW =
+    W-left-right;
+
+  const rowH =
+    (H-top-bottom)/items.length;
+
+  const max =
+    Math.max(
+      ...items.map(d=>d.total),
+      1
+    );
+
+  let svg = `
+    <svg
+      viewBox="0 0 ${W} ${H}"
+      width="100%"
+      height="100%"
+      aria-label="Top 10 sekolah"
+    >
+  `;
+
+
+  /* GRID */
+
+  for(let i=0;i<=5;i++) {
+
+    const x =
+      left+plotW*i/5;
+
+    const val =
+      Math.round(max*i/5);
+
+    svg += `
+      <line
+        x1="${x}"
+        y1="${top}"
+        x2="${x}"
+        y2="${H-bottom}"
+        stroke="#E2E7F2"
+      />
+    `;
+
+    svg += `
+      <text
+        x="${x}"
+        y="${H-7}"
+        text-anchor="middle"
+        fill="#7A8398"
+        font-size="10.5"
+      >
+        ${val}
+      </text>
+    `;
+
+  }
+
+
+  /* BAR */
+
+  items.forEach((d,i)=>{
+
+    const y =
+      top+i*rowH+5;
+
+    const h =
+      Math.max(
+        12,
+        rowH-10
+      );
+
+    const totalW =
+      plotW*d.total/max;
+
+    const duW =
+      plotW*d.du/max;
+
+    const belumW =
+      plotW*d.belum/max;
+
+    const label =
+      d.school.length>34
+      ? d.school.slice(0,33)+"…"
+      : d.school;
+
+
+    svg += `
+      <text
+        x="${left-12}"
+        y="${y+h/2+4}"
+        text-anchor="end"
+        fill="#27345A"
+        font-size="11.5"
+        font-weight="600"
+      >
+        ${esc(label)}
+      </text>
+    `;
+
+
+    svg += `
+      <rect
+        x="${left}"
+        y="${y}"
+        width="${totalW}"
+        height="${h}"
+        rx="6"
+        fill="#E7EAF3"
+      />
+    `;
+
+
+    svg += `
+      <rect
+        x="${left}"
+        y="${y}"
+        width="${duW}"
+        height="${h}"
+        rx="6"
+        fill="#071A9C"
+      />
+    `;
+
+
+    svg += `
+      <rect
+        x="${left+duW}"
+        y="${y}"
+        width="${belumW}"
+        height="${h}"
+        rx="6"
+        fill="#D71920"
+      />
+    `;
+
+
+    svg += `
+      <text
+        x="${left+totalW+8}"
+        y="${y+h/2+4}"
+        fill="#071A9C"
+        font-size="11"
+        font-weight="800"
+      >
+        ${d.total}
+      </text>
+    `;
+
+
+    svg += `
+      <title>
+        ${esc(d.school)}
+        | Pendaftar: ${d.total}
+        | Sudah DU: ${d.du}
+        | Belum DU: ${d.belum}
+      </title>
+    `;
+
+  });
+
+
+  svg += `
+    </svg>
+  `;
+
+  el.innerHTML = svg;
+
+}
+
+
+/* =====================================================
+   FILTER
+====================================================== */
 
 function currentRows() {
-  const q=document.getElementById("search").value.trim().toLowerCase();
-  const filter=document.getElementById("filter").value;
-  let arr=sortedData();
-  if(q) arr=arr.filter(d=>(d.school+" "+d.bk+" "+d.phone+" "+d.mahasiswa).toLowerCase().includes(q));
-  if(filter==="top10") arr=arr.slice(0,10);
-  if(filter==="full") arr=arr.filter(d=>d.total>0 && d.du===d.total);
-  if(filter==="pending") arr=arr.filter(d=>d.belum>0);
-  if(filter==="mahasiswa") arr=arr.filter(d=>d.mahasiswa.trim()!=="");
+
+  const q =
+    document
+      .getElementById("search")
+      .value
+      .trim()
+      .toLowerCase();
+
+  const filter =
+    document
+      .getElementById("filter")
+      .value;
+
+
+  let arr =
+    sortedData();
+
+
+  /* SEARCH */
+
+  if(q) {
+
+    arr =
+      arr.filter(d =>
+
+        (
+          d.school +
+          " " +
+          d.bk +
+          " " +
+          d.phone +
+          " " +
+          d.mahasiswa
+        )
+        .toLowerCase()
+        .includes(q)
+
+      );
+
+  }
+
+
+  /* TOP 10 */
+
+  if(filter === "top10") {
+
+    arr =
+      arr.slice(0,10);
+
+  }
+
+
+  /* DU 100% */
+
+  if(filter === "full") {
+
+    arr =
+      arr.filter(
+        d =>
+          d.total > 0 &&
+          d.du === d.total
+      );
+
+  }
+
+
+  /* BELUM DU */
+
+  if(filter === "pending") {
+
+    arr =
+      arr.filter(
+        d => d.belum > 0
+      );
+
+  }
+
+
+  /* ADA DATA MAHASISWA */
+
+  if(filter === "mahasiswa") {
+
+    arr =
+      arr.filter(
+        d =>
+          d.mahasiswa.trim() !== ""
+      );
+
+  }
+
+
   return arr;
+
 }
+
+
+/* =====================================================
+   RENDER TABLE
+====================================================== */
 
 function renderTable() {
-  const arr=currentRows();
-  const body=document.getElementById("tbody");
-  body.innerHTML=arr.map((d,i)=>{
-    const rate=d.total?d.du/d.total*100:0;
-    const cls=rate===100?"full":"partial";
-    return `<tr>
-      <td><span class="rank">${i+1}</span></td>
-      <td class="school">${esc(d.school)}</td>
-      <td class="num"><b>${d.total}</b></td>
-      <td class="num">${d.du}</td>
-      <td class="num">${d.belum}</td>
-      <td class="num"><span class="badge ${cls}">${rate.toFixed(1)}%</span></td>
-      <td>${d.bk?esc(d.bk):'<span class="empty">-</span>'}</td>
-      <td>${d.phone?esc(d.phone):'<span class="empty">-</span>'}</td>
-      <td class="mahasiswa">${d.mahasiswa?esc(d.mahasiswa):'<span class="empty">Belum ada data</span>'}</td>
-    </tr>`;
-  }).join("");
+
+  const arr =
+    currentRows();
+
+  const body =
+    document.getElementById("tbody");
+
+
+  body.innerHTML =
+
+    arr.map((d,i)=>{
+
+      const rate =
+        d.total
+        ? d.du/d.total*100
+        : 0;
+
+
+      const cls =
+        rate === 100
+        ? "full"
+        : "partial";
+
+
+      return `
+
+        <tr>
+
+          <td>
+            <span class="rank">
+              ${i+1}
+            </span>
+          </td>
+
+
+          <td class="school">
+            ${esc(d.school)}
+          </td>
+
+
+          <td class="num">
+            <b>
+              ${d.total}
+            </b>
+          </td>
+
+
+          <td class="num">
+            ${d.du}
+          </td>
+
+
+          <td class="num">
+            ${d.belum}
+          </td>
+
+
+          <td class="num">
+
+            <span
+              class="badge ${cls}"
+            >
+              ${rate.toFixed(1)}%
+            </span>
+
+          </td>
+
+
+          <td>
+            ${
+              d.bk
+              ? esc(d.bk)
+              : '<span class="empty">-</span>'
+            }
+          </td>
+
+
+          <td>
+            ${
+              d.phone
+              ? esc(d.phone)
+              : '<span class="empty">-</span>'
+            }
+          </td>
+
+
+          <td class="mahasiswa">
+
+            ${
+              d.mahasiswa
+              ? esc(d.mahasiswa)
+              : '<span class="empty">
+                   Belum ada data
+                 </span>'
+            }
+
+          </td>
+
+        </tr>
+
+      `;
+
+    })
+    .join("");
+
 }
 
-document.getElementById("search").addEventListener("input",renderTable);
-document.getElementById("filter").addEventListener("change",renderTable);
-window.addEventListener("resize",()=>{clearTimeout(window.__r);window.__r=setTimeout(renderChart,130)});
+
+/* =====================================================
+   EVENT
+====================================================== */
+
+document
+  .getElementById("search")
+  .addEventListener(
+    "input",
+    renderTable
+  );
+
+
+document
+  .getElementById("filter")
+  .addEventListener(
+    "change",
+    renderTable
+  );
+
+
+window.addEventListener(
+  "resize",
+  ()=>{
+    clearTimeout(window.__r);
+
+    window.__r =
+      setTimeout(
+        renderChart,
+        130
+      );
+  }
+);
+
+
+/* =====================================================
+   INITIALIZE
+====================================================== */
 
 renderChart();
+
 renderTable();
+
 </script>
+
 </body>
 </html>
