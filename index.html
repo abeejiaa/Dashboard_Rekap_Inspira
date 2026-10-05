@@ -2,23 +2,40 @@
 <html lang="id">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Dashboard Pendaftar Mahasiswa Baru 2026/2027</title>
 
 <style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
 :root {
   --primary:#071A9C;
+  --primary2:#1239E8;
   --secondary:#D71920;
+  --gold:#FFD338;
+
   --primary-soft:#EEF2FF;
   --secondary-soft:#FFF0F1;
+
   --ink:#14213D;
   --muted:#697386;
+
   --bg:#F5F7FF;
   --card:#FFFFFF;
   --line:#E1E6F2;
-  --success:#071A9C;
-  --warning:#D71920;
+
+  --success:#2F7D5B;
+  --warning:#9A6929;
 }
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 * {
   box-sizing:border-box;
@@ -30,557 +47,1080 @@ html {
 
 body {
   margin:0;
-  font-family:Inter,"Segoe UI",Arial,sans-serif;
+
+  font-family:
+    Inter,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
   color:var(--ink);
+
   background:
-    radial-gradient(circle at top right, rgba(18,57,232,.12), transparent 24rem),
-    linear-gradient(180deg,#F8FAFF 0%,var(--bg) 100%);
+    radial-gradient(
+      circle at top right,
+      rgba(18,57,232,.12),
+      transparent 24rem
+    ),
+    linear-gradient(
+      180deg,
+      #F8FAFF 0%,
+      var(--bg) 100%
+    );
 }
 
-/* =========================
+
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
-  background:linear-gradient(
-    135deg,
-    #071A9C 0%,
-    #1239E8 58%,
-    #D71920 100%
-  );
+
+  background:
+    linear-gradient(
+      135deg,
+      #071A9C 0%,
+      #1239E8 58%,
+      #D71920 100%
+    );
+
   color:#fff;
+
   padding:34px 5vw 66px;
+
   position:relative;
+
   overflow:hidden;
 }
 
 .hero:before,
 .hero:after {
+
   content:"";
+
   position:absolute;
+
   border-radius:999px;
-  background:rgba(255,255,255,.07);
+
+  background:
+    rgba(255,255,255,.07);
 }
 
 .hero:before {
+
   width:290px;
   height:290px;
+
   right:-90px;
   top:-110px;
 }
 
 .hero:after {
+
   width:170px;
   height:170px;
+
   right:180px;
   bottom:-100px;
 }
 
 .hero-inner {
+
   max-width:1460px;
+
   margin:auto;
+
   position:relative;
+
   z-index:1;
 }
 
 .eyebrow {
+
   font-size:12px;
+
   font-weight:800;
+
   letter-spacing:1.6px;
+
   text-transform:uppercase;
-  opacity:.8;
+
+  opacity:.85;
 }
 
 .hero h1 {
-  font-size:clamp(26px,3vw,44px);
-  margin:7px 0 8px;
+
+  font-size:
+    clamp(
+      26px,
+      3vw,
+      44px
+    );
+
+  margin:
+    7px 0 8px;
+
   letter-spacing:-.8px;
 }
 
 .hero p {
+
   margin:0;
-  opacity:.86;
+
+  opacity:.9;
+
   font-size:14px;
 }
 
-/* =========================
+
+/* =========================================================
    CONTAINER
-========================= */
+========================================================= */
 
 .container {
+
   max-width:1460px;
+
   margin:auto;
-  padding:0 24px 30px;
+
+  padding:
+    0 24px 30px;
 }
 
-/* =========================
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card {
+
+  background:
+    rgba(255,255,255,.97);
+
+  border:
+    1px solid var(--line);
+
+  border-radius:20px;
+
+  box-shadow:
+    0 14px 35px
+    rgba(7,26,156,.10);
+}
+
+
+/* =========================================================
    KPI
-========================= */
+========================================================= */
 
 .kpis {
+
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
+
   gap:16px;
+
   margin-top:-36px;
+
   position:relative;
+
   z-index:2;
 }
 
-.card {
-  background:rgba(255,255,255,.96);
-  border:1px solid var(--line);
-  border-radius:20px;
-  box-shadow:0 14px 35px rgba(7,26,156,.10);
-}
-
 .kpi {
-  padding:20px 21px;
+
+  padding:
+    20px 21px;
+
   position:relative;
+
   overflow:hidden;
 }
 
 .kpi:after {
+
   content:"";
+
   position:absolute;
+
   right:-20px;
+
   top:-20px;
+
   width:90px;
+
   height:90px;
+
   border-radius:50%;
-  background:linear-gradient(135deg,#EEF2FF,#FFF3B0);
+
+  background:
+    linear-gradient(
+      135deg,
+      #EEF2FF,
+      #FFF3B0
+    );
 }
 
 .kpi-label {
+
   font-size:11px;
+
   text-transform:uppercase;
+
   letter-spacing:1px;
+
   color:var(--muted);
+
   font-weight:800;
+
   position:relative;
+
   z-index:1;
 }
 
 .kpi-value {
+
   font-size:34px;
+
   font-weight:850;
+
   color:var(--primary);
-  margin:6px 0 2px;
+
+  margin:
+    6px 0 2px;
+
   position:relative;
+
   z-index:1;
 }
 
 .kpi-note {
+
   font-size:12px;
+
   color:var(--muted);
+
   position:relative;
+
   z-index:1;
 }
 
-/* =========================
+
+/* =========================================================
    MAIN GRID
-========================= */
+========================================================= */
 
 .main-grid {
+
   display:grid;
-  grid-template-columns:1.45fr .8fr;
+
+  grid-template-columns:
+    1.45fr .8fr;
+
   gap:18px;
+
   margin-top:18px;
 }
 
 .panel {
+
   padding:22px;
 }
 
 .panel-head {
+
   display:flex;
-  justify-content:space-between;
-  align-items:flex-start;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    flex-start;
+
   gap:16px;
+
   margin-bottom:18px;
 }
 
 .panel h2 {
+
   font-size:18px;
-  margin:0 0 4px;
+
+  margin:
+    0 0 4px;
 }
 
 .panel p {
+
   font-size:12.5px;
+
   color:var(--muted);
+
   margin:0;
 }
 
 .chip {
+
   font-size:11px;
+
   font-weight:800;
-  background:#FFD338;
+
+  background:var(--gold);
+
   color:#071A9C;
-  padding:7px 10px;
+
+  padding:
+    7px 10px;
+
   border-radius:999px;
+
   white-space:nowrap;
-  box-shadow:0 3px 10px rgba(255,211,56,.28);
+
+  box-shadow:
+    0 3px 10px
+    rgba(255,211,56,.28);
 }
+
+
+/* =========================================================
+   TOP 10 CHART
+========================================================= */
 
 #barChart {
+
   width:100%;
-  min-height:410px;
+
+  min-height:420px;
+
+  padding-top:4px;
 }
 
-.legend {
+.top10-chart {
+
   display:flex;
+
+  flex-direction:column;
+
   gap:15px;
+
+  width:100%;
+}
+
+.chart-row {
+
+  display:grid;
+
+  grid-template-columns:
+    230px
+    1fr
+    45px;
+
+  align-items:center;
+
+  gap:12px;
+}
+
+.chart-school {
+
+  font-size:12px;
+
+  font-weight:700;
+
+  color:#27345A;
+
+  text-align:right;
+
+  white-space:nowrap;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+}
+
+.chart-bar-area {
+
+  height:30px;
+
+  background:#EEF1F7;
+
+  border-radius:8px;
+
+  overflow:hidden;
+
+  position:relative;
+
+  box-shadow:
+    inset 0 1px 2px
+    rgba(0,0,0,.04);
+}
+
+.chart-bar-du {
+
+  position:absolute;
+
+  left:0;
+
+  top:0;
+
+  height:100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #071A9C,
+      #1239E8
+    );
+
+  border-radius:
+    8px 0 0 8px;
+
+  transition:
+    width .5s ease;
+}
+
+.chart-bar-belum {
+
+  position:absolute;
+
+  top:0;
+
+  height:100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      #D71920,
+      #EF5350
+    );
+
+  transition:
+    width .5s ease,
+    left .5s ease;
+}
+
+.chart-total {
+
+  font-size:15px;
+
+  font-weight:850;
+
+  color:var(--primary);
+
+  text-align:left;
+}
+
+.chart-rank {
+
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  width:23px;
+
+  height:23px;
+
+  border-radius:7px;
+
+  background:
+    var(--primary-soft);
+
+  color:
+    var(--primary);
+
+  margin-right:5px;
+
+  font-size:10px;
+
+  font-weight:800;
+}
+
+
+/* =========================================================
+   LEGEND
+========================================================= */
+
+.legend {
+
+  display:flex;
+
+  gap:18px;
+
   flex-wrap:wrap;
-  margin-top:8px;
+
+  margin-top:16px;
+
   color:var(--muted);
+
   font-size:12px;
 }
 
-.legend i {
-  display:inline-block;
-  width:10px;
-  height:10px;
-  border-radius:3px;
-  margin-right:5px;
+.legend span {
+
+  display:flex;
+
+  align-items:center;
 }
 
-/* =========================
+.legend i {
+
+  display:inline-block;
+
+  width:12px;
+
+  height:12px;
+
+  border-radius:3px;
+
+  margin-right:6px;
+}
+
+
+/* =========================================================
    DONUT
-========================= */
+========================================================= */
 
 .donut-area {
+
   display:grid;
+
   place-items:center;
+
   min-height:285px;
+
   position:relative;
 }
 
 .donut {
+
   width:225px;
+
   height:225px;
+
   border-radius:50%;
 
   background:
     conic-gradient(
-      #071A9C 0 64.0%,
-      #F2D7DA 64.0% 100%
+      #071A9C
+      0 64%,
+
+      #F2D7DA
+      64% 100%
     );
 
   box-shadow:
-    inset 0 0 0 1px rgba(7,26,156,.07);
+    inset
+    0 0 0 1px
+    rgba(7,26,156,.07);
 
   position:relative;
 }
 
 .donut:after {
+
   content:"";
+
   position:absolute;
+
   inset:43px;
+
   background:#fff;
+
   border-radius:50%;
-  box-shadow:0 8px 25px rgba(7,26,156,.10);
+
+  box-shadow:
+    0 8px 25px
+    rgba(7,26,156,.10);
 }
 
 .donut-text {
+
   position:absolute;
+
   text-align:center;
+
   z-index:2;
 }
 
 .donut-text strong {
+
   display:block;
+
   color:var(--primary);
+
   font-size:38px;
 }
 
 .donut-text span {
+
   font-size:12px;
+
   color:var(--muted);
 }
 
+
+/* =========================================================
+   MINI STAT
+========================================================= */
+
 .mini-stats {
+
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap:10px;
+
   margin-top:8px;
 }
 
 .mini {
+
   background:#FAFBFF;
-  border:1px solid var(--line);
+
+  border:
+    1px solid var(--line);
+
   padding:12px;
+
   border-radius:13px;
 }
 
 .mini b {
+
   display:block;
+
   color:var(--primary);
+
   font-size:18px;
 }
 
 .mini span {
+
   font-size:11px;
+
   color:var(--muted);
 }
 
-.notice {
-  margin-top:18px;
-  padding:13px 15px;
-  border:1px solid #F0D4D7;
-  background:#FFF8F8;
-  color:#8B1E2D;
-  border-radius:14px;
-  font-size:12.5px;
-  line-height:1.55;
-}
 
-/* =========================
+/* =========================================================
    TABLE
-========================= */
+========================================================= */
 
 .table-card {
+
   margin-top:18px;
+
   overflow:hidden;
 }
 
 .table-top {
-  padding:21px 22px 12px;
+
+  padding:
+    21px 22px 12px;
 }
 
 .table-top h2 {
+
   font-size:18px;
-  margin:0 0 4px;
+
+  margin:
+    0 0 4px;
 }
 
 .table-top p {
+
   margin:0;
+
   color:var(--muted);
+
   font-size:12.5px;
 }
 
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
 .controls {
+
   display:flex;
+
   gap:10px;
+
   flex-wrap:wrap;
+
   margin-top:16px;
 }
 
 .controls input,
 .controls select {
-  border:1px solid var(--line);
+
+  border:
+    1px solid var(--line);
+
   background:#fff;
+
   border-radius:11px;
-  padding:10px 12px;
+
+  padding:
+    10px 12px;
+
   font:inherit;
+
   color:var(--ink);
+
   outline:none;
+}
+
+.controls input {
+
+  min-width:320px;
+
+  flex:1;
 }
 
 .controls input:focus,
 .controls select:focus {
-  border-color:var(--secondary);
-  box-shadow:0 0 0 3px rgba(18,57,232,.14);
-}
 
-.controls input {
-  min-width:320px;
-  flex:1;
+  border-color:
+    var(--secondary);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(18,57,232,.14);
 }
 
 .controls button {
+
   border:0;
-  background:#D71920;
+
+  background:
+    var(--secondary);
+
   color:#fff;
+
   border-radius:11px;
-  padding:10px 15px;
+
+  padding:
+    10px 15px;
+
   font-weight:800;
+
   cursor:pointer;
-  box-shadow:0 6px 16px rgba(215,25,32,.18);
+
+  box-shadow:
+    0 6px 16px
+    rgba(215,25,32,.18);
 }
 
 .controls button:hover {
-  background:#1239E8;
+
+  background:
+    var(--primary2);
 }
 
+
+/* =========================================================
+   TABLE
+========================================================= */
+
 .table-wrap {
+
   overflow:auto;
+
   max-height:650px;
-  border-top:1px solid var(--line);
+
+  border-top:
+    1px solid var(--line);
 }
 
 table {
+
   width:100%;
+
   border-collapse:collapse;
+
   font-size:12.5px;
 }
 
 thead th {
+
   position:sticky;
+
   top:0;
+
   background:#EEF2FF;
+
   color:#071A9C;
-  padding:12px 11px;
+
+  padding:
+    12px 11px;
+
   text-align:left;
-  border-bottom:1px solid var(--line);
+
+  border-bottom:
+    1px solid var(--line);
+
   z-index:1;
+
   white-space:nowrap;
 }
 
 tbody td {
+
   padding:11px;
-  border-bottom:1px solid #E8ECF6;
+
+  border-bottom:
+    1px solid #E8ECF6;
+
   vertical-align:top;
 }
 
 tbody tr:hover td {
+
   background:#FAFBFF;
 }
 
 .num {
+
   text-align:right;
-  font-variant-numeric:tabular-nums;
+
+  font-variant-numeric:
+    tabular-nums;
 }
 
 .school {
+
   font-weight:750;
+
   color:#17255B;
+
   min-width:220px;
 }
 
 .rank {
+
   display:inline-grid;
+
   place-items:center;
+
   width:28px;
+
   height:28px;
+
   border-radius:8px;
-  background:var(--primary-soft);
-  color:var(--primary);
+
+  background:
+    var(--primary-soft);
+
+  color:
+    var(--primary);
+
   font-weight:800;
 }
 
 .badge {
+
   display:inline-block;
-  padding:4px 8px;
+
+  padding:
+    4px 8px;
+
   border-radius:999px;
+
   font-weight:800;
+
   font-size:11px;
 }
 
 .full {
+
   background:#E9F5EF;
+
   color:#2F7D5B;
 }
 
 .partial {
+
   background:#FFF3E4;
+
   color:#9A6929;
 }
 
 .mahasiswa {
+
   min-width:260px;
+
   max-width:420px;
+
   line-height:1.45;
+
   color:#56617A;
 }
 
 .empty {
+
   color:#A3AABD;
 }
 
-/* =========================
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 .footer {
+
   text-align:center;
+
   color:#727A8E;
+
   font-size:11.5px;
+
   padding:24px 0;
 }
 
-/* =========================
+
+/* =========================================================
    RESPONSIVE
-========================= */
+========================================================= */
 
 @media(max-width:980px) {
 
   .kpis {
-    grid-template-columns:repeat(2,1fr);
+
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
   .main-grid {
+
     grid-template-columns:1fr;
   }
+
+}
+
+@media(max-width:700px) {
+
+  .chart-row {
+
+    grid-template-columns:
+      130px
+      1fr
+      35px;
+
+    gap:8px;
+  }
+
+  .chart-school {
+
+    font-size:10px;
+  }
+
+  .chart-bar-area {
+
+    height:24px;
+  }
+
 }
 
 @media(max-width:560px) {
 
   .container {
-    padding:0 12px 22px;
+
+    padding:
+      0 12px 22px;
   }
 
   .hero {
-    padding:28px 16px 60px;
+
+    padding:
+      28px 16px 60px;
   }
 
   .kpis {
+
     gap:10px;
   }
 
   .kpi {
+
     padding:15px;
   }
 
   .kpi-value {
+
     font-size:28px;
   }
 
   .controls input {
+
     min-width:100%;
   }
+
+  .mini-stats {
+
+    grid-template-columns:1fr;
+  }
+
 }
 
-/* =========================
+
+/* =========================================================
    PRINT
-========================= */
+========================================================= */
 
 @media print {
 
   body {
+
     background:#fff;
   }
 
   .hero {
+
     padding-bottom:45px;
   }
 
   .card {
+
     box-shadow:none;
   }
 
   .controls {
+
     display:none;
   }
 
   .table-wrap {
+
     max-height:none;
+
     overflow:visible;
   }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =====================================================
-     HEADER
-====================================================== -->
+
+<!-- =========================================================
+     HERO
+========================================================= -->
 
 <header class="hero">
 
   <div class="hero-inner">
 
     <div class="eyebrow">
-      PMB 2026 • Rekapitulasi Global
+      PMB 2026 • REKAPITULASI GLOBAL
     </div>
 
     <h1>
@@ -588,7 +1128,7 @@ tbody tr:hover td {
     </h1>
 
     <p>
-      Data Rekapitulasi Terbaru • Total 236 Pendaftar
+      Rekapitulasi berdasarkan Asal Sekolah • Total 236 Pendaftar
     </p>
 
   </div>
@@ -598,11 +1138,13 @@ tbody tr:hover td {
 
 <main class="container">
 
-<!-- =====================================================
+
+<!-- =========================================================
      KPI
-====================================================== -->
+========================================================= -->
 
 <section class="kpis">
+
 
   <div class="card kpi">
 
@@ -671,18 +1213,23 @@ tbody tr:hover td {
 
   </div>
 
+
 </section>
 
 
-<!-- =====================================================
-     CHART + DONUT
-====================================================== -->
+<!-- =========================================================
+     CHART + CONVERSION
+========================================================= -->
 
 <section class="main-grid">
 
-<!-- TOP 10 -->
+
+<!-- =========================================================
+     TOP 10 SEKOLAH
+========================================================= -->
 
 <div class="card panel">
+
 
   <div class="panel-head">
 
@@ -693,8 +1240,8 @@ tbody tr:hover td {
       </h2>
 
       <p>
-        Batang menunjukkan Sudah DU dan Belum DU;
-        angka di kanan adalah total pendaftar berdasarkan data terbaru.
+        Menampilkan 10 sekolah dengan jumlah pendaftar terbanyak.
+        Biru = Sudah DU, Merah = Belum DU.
       </p>
 
     </div>
@@ -705,28 +1252,49 @@ tbody tr:hover td {
 
   </div>
 
+
   <div id="barChart"></div>
+
 
   <div class="legend">
 
     <span>
-      <i style="background:#071A9C"></i>
+
+      <i
+        style="
+          background:#071A9C;
+        "
+      ></i>
+
       Sudah DU
+
     </span>
 
+
     <span>
-      <i style="background:#D71920"></i>
+
+      <i
+        style="
+          background:#D71920;
+        "
+      ></i>
+
       Belum DU
+
     </span>
+
 
   </div>
 
 </div>
 
 
-<!-- CONVERSION -->
+<!-- =========================================================
+     DONUT
+========================================================= -->
 
 <div class="card panel">
+
 
   <div class="panel-head">
 
@@ -753,6 +1321,7 @@ tbody tr:hover td {
 
     <div class="donut"></div>
 
+
     <div class="donut-text">
 
       <strong>
@@ -769,6 +1338,7 @@ tbody tr:hover td {
 
 
   <div class="mini-stats">
+
 
     <div class="mini">
 
@@ -821,6 +1391,7 @@ tbody tr:hover td {
 
     </div>
 
+
   </div>
 
 </div>
@@ -828,11 +1399,12 @@ tbody tr:hover td {
 </section>
 
 
-<!-- =====================================================
-     TABLE
-====================================================== -->
+<!-- =========================================================
+     DETAIL DATA
+========================================================= -->
 
 <section class="card table-card">
+
 
   <div class="table-top">
 
@@ -842,11 +1414,12 @@ tbody tr:hover td {
 
     <p>
       Cari sekolah, nama BK, nomor telepon, atau nama mahasiswa.
-      Klik filter untuk melihat kelompok tertentu.
+      Gunakan filter untuk melihat kelompok tertentu.
     </p>
 
 
     <div class="controls">
+
 
       <input
         id="search"
@@ -884,6 +1457,7 @@ tbody tr:hover td {
         Cetak / Simpan PDF
       </button>
 
+
     </div>
 
   </div>
@@ -891,7 +1465,9 @@ tbody tr:hover td {
 
   <div class="table-wrap">
 
+
     <table>
+
 
       <thead>
 
@@ -940,25 +1516,34 @@ tbody tr:hover td {
 
       <tbody id="tbody"></tbody>
 
+
     </table>
 
+
   </div>
+
 
 </section>
 
 
 <div class="footer">
-  Dashboard PMB 2026 • Tema UDB Biru • Merah • Emas
+
+  Dashboard PMB 2026
+  • UDB Biru • Merah • Emas
+  • Total 236 Pendaftar
+
 </div>
+
 
 </main>
 
 
 <script>
 
-/* =====================================================
-   DATA PENDAFTAR TERBARU
-====================================================== */
+
+/* =========================================================
+   DATA
+========================================================= */
 
 const data = [
 
@@ -969,7 +1554,7 @@ const data = [
     du:6,
     belum:3,
     bk:"IBU ANA",
-    phone:"81804447501",
+    phone:"081804447501",
     mahasiswa:""
   },
 
@@ -980,7 +1565,7 @@ const data = [
     du:5,
     belum:4,
     bk:"IBU NURUL",
-    phone:"81329144400",
+    phone:"081329144400",
     mahasiswa:""
   },
 
@@ -991,8 +1576,9 @@ const data = [
     du:3,
     belum:0,
     bk:"IBU FAT",
-    phone:"81548760438",
-    mahasiswa:"RAFEL THORIQ ABRAR, WIRA DUTA ARIYANTO PUTRA, KADZIYA YUMNA SHAULA"
+    phone:"081548760438",
+    mahasiswa:
+      "RAFEL THORIQ ABRAR, WIRA DUTA ARIYANTO PUTRA, KADZIYA YUMNA SHAULA"
   },
 
   {
@@ -1002,7 +1588,7 @@ const data = [
     du:3,
     belum:3,
     bk:"MISS HANA",
-    phone:"82314761414",
+    phone:"082314761414",
     mahasiswa:""
   },
 
@@ -1013,8 +1599,9 @@ const data = [
     du:4,
     belum:4,
     bk:"IBU APRIL",
-    phone:"82226252614",
-    mahasiswa:"MU'AMMAR RIDHWAN AL KHOIRI, TERY SAPUTRA, ZAIDAN ROZZAQ ROIF, Zulfa Kartikasari, MUHAMMAD DUJANA, RAFI PANDU RAMADHANU, ZAHRA RISQI SRI KUNCARA, SALSABILLA DWI AURORA"
+    phone:"082226252614",
+    mahasiswa:
+      "MU'AMMAR RIDHWAN AL KHOIRI, TERY SAPUTRA, ZAIDAN ROZZAQ ROIF, Zulfa Kartikasari, MUHAMMAD DUJANA, RAFI PANDU RAMADHANU, ZAHRA RISQI SRI KUNCARA, SALSABILLA DWI AURORA"
   },
 
   {
@@ -1024,8 +1611,9 @@ const data = [
     du:2,
     belum:0,
     bk:"IBU VIVIN",
-    phone:"8562720184",
-    mahasiswa:"MAGDA SERAFIN AZIZAH, Rozeen Moammar Maruf"
+    phone:"08562720184",
+    mahasiswa:
+      "MAGDA SERAFIN AZIZAH, Rozeen Moammar Maruf"
   },
 
   {
@@ -1035,7 +1623,7 @@ const data = [
     du:3,
     belum:1,
     bk:"BP. MULYONO",
-    phone:"81329019236",
+    phone:"081329019236",
     mahasiswa:""
   },
 
@@ -1046,7 +1634,7 @@ const data = [
     du:1,
     belum:1,
     bk:"IBU FITRI",
-    phone:"82243456992",
+    phone:"082243456992",
     mahasiswa:""
   },
 
@@ -1068,7 +1656,7 @@ const data = [
     du:1,
     belum:2,
     bk:"IBU LINDA",
-    phone:"8156575881",
+    phone:"08156575881",
     mahasiswa:""
   },
 
@@ -1080,7 +1668,8 @@ const data = [
     belum:2,
     bk:"Kunjungan Sekolah",
     phone:"",
-    mahasiswa:"ISTI NAFISA PUTRI, VANESA PUTRI FELICIA"
+    mahasiswa:
+      "ISTI NAFISA PUTRI, VANESA PUTRI FELICIA"
   },
 
   {
@@ -1101,7 +1690,7 @@ const data = [
     du:12,
     belum:7,
     bk:"IBU NURUL",
-    phone:"85741485107",
+    phone:"085741485107",
     mahasiswa:""
   },
 
@@ -1123,8 +1712,9 @@ const data = [
     du:1,
     belum:1,
     bk:"IBU WAHYU",
-    phone:"81327217474",
-    mahasiswa:"SAMSUL MA'ARIF, Vanya Nasya kalila"
+    phone:"081327217474",
+    mahasiswa:
+      "SAMSUL MA'ARIF, Vanya Nasya kalila"
   },
 
   {
@@ -1145,7 +1735,7 @@ const data = [
     du:5,
     belum:5,
     bk:"PAK SRIYONO",
-    phone:"85878286190",
+    phone:"085878286190",
     mahasiswa:""
   },
 
@@ -1168,7 +1758,8 @@ const data = [
     belum:2,
     bk:"Kunjungan Sekolah",
     phone:"",
-    mahasiswa:"AINA SHOFIYA ERPRIYONA, CHIQUITA NALA ALFI SYAHRIN, ARDINA EKA RAHMAWATI"
+    mahasiswa:
+      "AINA SHOFIYA ERPRIYONA, CHIQUITA NALA ALFI SYAHRIN, ARDINA EKA RAHMAWATI"
   },
 
   {
@@ -1179,7 +1770,8 @@ const data = [
     belum:0,
     bk:"Kunjungan Sekolah",
     phone:"",
-    mahasiswa:"Davin Giring Arezky, THRISTAN PUTRA PRATAMA ERDITYA, lorentius oktafviano yoga prakoso"
+    mahasiswa:
+      "Davin Giring Arezky, THRISTAN PUTRA PRATAMA ERDITYA, lorentius oktafviano yoga prakoso"
   },
 
   {
@@ -1189,7 +1781,7 @@ const data = [
     du:5,
     belum:2,
     bk:"IBU VERO",
-    phone:"81329192211",
+    phone:"081329192211",
     mahasiswa:""
   },
 
@@ -1211,7 +1803,7 @@ const data = [
     du:14,
     belum:8,
     bk:"BU INDRASWARI",
-    phone:"81393680055",
+    phone:"081393680055",
     mahasiswa:""
   },
 
@@ -1222,7 +1814,7 @@ const data = [
     du:8,
     belum:7,
     bk:"BU INDAH",
-    phone:"8122597622",
+    phone:"08122597622",
     mahasiswa:""
   },
 
@@ -1233,7 +1825,7 @@ const data = [
     du:18,
     belum:7,
     bk:"IBU INDAR",
-    phone:"81392510909",
+    phone:"081392510909",
     mahasiswa:""
   },
 
@@ -1256,7 +1848,8 @@ const data = [
     belum:0,
     bk:"kak nafi @udb.admission",
     phone:"",
-    mahasiswa:"Hanifa Destiana Kusuma Putri"
+    mahasiswa:
+      "Hanifa Destiana Kusuma Putri"
   },
 
   {
@@ -1267,7 +1860,8 @@ const data = [
     belum:0,
     bk:"kak nafi @udb.admission",
     phone:"",
-    mahasiswa:"Nabilah Muthoharoh"
+    mahasiswa:
+      "Nabilah Muthoharoh"
   },
 
   {
@@ -1311,7 +1905,8 @@ const data = [
     belum:0,
     bk:"kak nafi @udb.admission",
     phone:"",
-    mahasiswa:"Gracia Yodeta Dian Artika"
+    mahasiswa:
+      "Gracia Yodeta Dian Artika"
   },
 
   {
@@ -1322,7 +1917,8 @@ const data = [
     belum:0,
     bk:"Tiktok udb.admission",
     phone:"",
-    mahasiswa:"ANNISA FAJAR YUNIANTI"
+    mahasiswa:
+      "ANNISA FAJAR YUNIANTI"
   },
 
   {
@@ -1333,7 +1929,8 @@ const data = [
     belum:0,
     bk:"Tiktok udb.admission",
     phone:"",
-    mahasiswa:"ATHIYYAH GHAITSA SARAH"
+    mahasiswa:
+      "ATHIYYAH GHAITSA SARAH"
   },
 
   {
@@ -1344,7 +1941,8 @@ const data = [
     belum:1,
     bk:"Tiktok udb.admission",
     phone:"",
-    mahasiswa:"Ratri Dyah Ayu Puspaningrum"
+    mahasiswa:
+      "Ratri Dyah Ayu Puspaningrum"
   },
 
   {
@@ -1355,7 +1953,8 @@ const data = [
     belum:1,
     bk:"@udb.admission",
     phone:"",
-    mahasiswa:"Ahmad Fauzan Arrafi'i, BAGUS YOGI PRATAMA, SANDY ARIF SUGIRI"
+    mahasiswa:
+      "Ahmad Fauzan Arrafi'i, BAGUS YOGI PRATAMA, SANDY ARIF SUGIRI"
   },
 
   {
@@ -1366,7 +1965,8 @@ const data = [
     belum:1,
     bk:"Instagram @udb.admission",
     phone:"",
-    mahasiswa:"FLORA LEVITA FALENSIA, SENDYKA PRATAMA"
+    mahasiswa:
+      "FLORA LEVITA FALENSIA, SENDYKA PRATAMA"
   },
 
   {
@@ -1377,7 +1977,8 @@ const data = [
     belum:0,
     bk:"Instagram udb.admission",
     phone:"",
-    mahasiswa:"chelsea fresilia rahmadhani"
+    mahasiswa:
+      "chelsea fresilia rahmadhani"
   },
 
   {
@@ -1388,7 +1989,8 @@ const data = [
     belum:1,
     bk:"udb.admission",
     phone:"",
-    mahasiswa:"Yosefina Bunga Taimenas Krowin"
+    mahasiswa:
+      "Yosefina Bunga Taimenas Krowin"
   },
 
   {
@@ -1399,7 +2001,8 @@ const data = [
     belum:0,
     bk:"Instagram",
     phone:"",
-    mahasiswa:"SINDY AULIA SARI"
+    mahasiswa:
+      "SINDY AULIA SARI"
   },
 
   {
@@ -1410,7 +2013,8 @@ const data = [
     belum:0,
     bk:"Tiktok Kak Nafi @udb.admission",
     phone:"",
-    mahasiswa:"Maria Susanti Demaya"
+    mahasiswa:
+      "Maria Susanti Demaya"
   },
 
   {
@@ -1421,7 +2025,8 @@ const data = [
     belum:0,
     bk:"",
     phone:"",
-    mahasiswa:"DANIEL CHRISTIAN LIE"
+    mahasiswa:
+      "DANIEL CHRISTIAN LIE"
   },
 
   {
@@ -1432,7 +2037,8 @@ const data = [
     belum:0,
     bk:"kak nafi @udb.admission",
     phone:"",
-    mahasiswa:"Dimas Fitrah Aditya"
+    mahasiswa:
+      "Dimas Fitrah Aditya"
   },
 
   {
@@ -1487,7 +2093,8 @@ const data = [
     belum:0,
     bk:"Tiktok Kak Nafi @udb.admission",
     phone:"",
-    mahasiswa:"ARROZIKIN KHOLIFAH"
+    mahasiswa:
+      "ARROZIKIN KHOLIFAH"
   },
 
   {
@@ -1498,7 +2105,8 @@ const data = [
     belum:1,
     bk:"kak nafi @udb.admission",
     phone:"",
-    mahasiswa:"TALITHA LUTFI ZAHRALIANA"
+    mahasiswa:
+      "TALITHA LUTFI ZAHRALIANA"
   },
 
   {
@@ -1509,7 +2117,8 @@ const data = [
     belum:0,
     bk:"Instagram udb.admission",
     phone:"",
-    mahasiswa:"Jullysa Evangline Patricia Rantung"
+    mahasiswa:
+      "Jullysa Evangline Patricia Rantung"
   },
 
   {
@@ -1520,7 +2129,8 @@ const data = [
     belum:0,
     bk:"kak nafi @udb.admission",
     phone:"",
-    mahasiswa:"SEPTINA RAMADHANIA PUSPITASARI"
+    mahasiswa:
+      "SEPTINA RAMADHANIA PUSPITASARI"
   },
 
   {
@@ -1531,7 +2141,8 @@ const data = [
     belum:0,
     bk:"Bu Sri Sumarlinda",
     phone:"",
-    mahasiswa:"YESI LELY PUSPITASARI"
+    mahasiswa:
+      "YESI LELY PUSPITASARI"
   },
 
   {
@@ -1542,7 +2153,8 @@ const data = [
     belum:0,
     bk:"Ibu Sri Sumarlinda",
     phone:"",
-    mahasiswa:"SHESILYA RIZCIKA PUTRI"
+    mahasiswa:
+      "SHESILYA RIZCIKA PUTRI"
   },
 
   {
@@ -1553,7 +2165,8 @@ const data = [
     belum:0,
     bk:"Ibu Sri Sumarlinda",
     phone:"",
-    mahasiswa:"APRILIYA WULAN DANI"
+    mahasiswa:
+      "APRILIYA WULAN DANI"
   },
 
   {
@@ -1607,7 +2220,7 @@ const data = [
     du:0,
     belum:1,
     bk:"MORIT",
-    phone:"85728877418",
+    phone:"085728877418",
     mahasiswa:""
   },
 
@@ -1625,239 +2238,201 @@ const data = [
 ];
 
 
-/* =====================================================
+/* =========================================================
    ESCAPE HTML
-====================================================== */
+========================================================= */
 
-function esc(v) {
+function esc(value) {
 
-  return String(v ?? "")
+  return String(value ?? "")
     .replace(
       /[&<>"']/g,
 
-      c => ({
-        '&':'&amp;',
-        '<':'&lt;',
-        '>':'&gt;',
-        '"':'&quot;',
-        "'":'&#39;'
-      }[c])
+      function(c) {
+
+        return {
+          "&":"&amp;",
+          "<":"&lt;",
+          ">":"&gt;",
+          '"':"&quot;",
+          "'":"&#39;"
+        }[c];
+
+      }
     );
 
 }
 
 
-/* =====================================================
-   SORT DATA
-====================================================== */
+/* =========================================================
+   SORT
+========================================================= */
 
 function sortedData() {
 
   return [...data].sort(
-    (a,b) =>
-      b.total-a.total ||
-      a.school.localeCompare(b.school)
+
+    function(a,b) {
+
+      return (
+        b.total - a.total ||
+        a.school.localeCompare(b.school)
+      );
+
+    }
+
   );
 
 }
 
 
-/* =====================================================
-   BAR CHART
-====================================================== */
+/* =========================================================
+   TOP 10 CHART
+========================================================= */
 
 function renderChart() {
 
   const items =
     sortedData().slice(0,10);
 
+
   const el =
     document.getElementById("barChart");
 
-  const W =
-    Math.max(820,el.clientWidth || 820);
 
-  const H = 410;
+  if(!el) return;
 
-  const left = 260;
-  const right = 52;
-  const top = 18;
-  const bottom = 28;
-
-  const plotW =
-    W-left-right;
-
-  const rowH =
-    (H-top-bottom)/items.length;
 
   const max =
     Math.max(
-      ...items.map(d=>d.total),
+      ...items.map(
+        d => d.total
+      ),
       1
     );
 
-  let svg = `
-    <svg
-      viewBox="0 0 ${W} ${H}"
-      width="100%"
-      height="100%"
-      aria-label="Top 10 sekolah"
-    >
-  `;
+
+  let html =
+    '<div class="top10-chart">';
 
 
-  /* GRID */
-
-  for(let i=0;i<=5;i++) {
-
-    const x =
-      left+plotW*i/5;
-
-    const val =
-      Math.round(max*i/5);
-
-    svg += `
-      <line
-        x1="${x}"
-        y1="${top}"
-        x2="${x}"
-        y2="${H-bottom}"
-        stroke="#E2E7F2"
-      />
-    `;
-
-    svg += `
-      <text
-        x="${x}"
-        y="${H-7}"
-        text-anchor="middle"
-        fill="#7A8398"
-        font-size="10.5"
-      >
-        ${val}
-      </text>
-    `;
-
-  }
+  items.forEach(
+    function(d,index) {
 
 
-  /* BAR */
+      /*
+        Lebar bar dihitung berdasarkan
+        jumlah pendaftar terbesar.
 
-  items.forEach((d,i)=>{
+        Sekolah dengan 25 pendaftar
+        = 100% panjang bar.
+      */
 
-    const y =
-      top+i*rowH+5;
-
-    const h =
-      Math.max(
-        12,
-        rowH-10
-      );
-
-    const totalW =
-      plotW*d.total/max;
-
-    const duW =
-      plotW*d.du/max;
-
-    const belumW =
-      plotW*d.belum/max;
-
-    const label =
-      d.school.length>34
-      ? d.school.slice(0,33)+"…"
-      : d.school;
+      const totalPercent =
+        (d.total / max) * 100;
 
 
-    svg += `
-      <text
-        x="${left-12}"
-        y="${y+h/2+4}"
-        text-anchor="end"
-        fill="#27345A"
-        font-size="11.5"
-        font-weight="600"
-      >
-        ${esc(label)}
-      </text>
-    `;
+      const duPercent =
+        (d.du / d.total) * totalPercent;
 
 
-    svg += `
-      <rect
-        x="${left}"
-        y="${y}"
-        width="${totalW}"
-        height="${h}"
-        rx="6"
-        fill="#E7EAF3"
-      />
-    `;
+      const belumPercent =
+        (d.belum / d.total) * totalPercent;
 
 
-    svg += `
-      <rect
-        x="${left}"
-        y="${y}"
-        width="${duW}"
-        height="${h}"
-        rx="6"
-        fill="#071A9C"
-      />
-    `;
+      html += `
+
+        <div class="chart-row">
 
 
-    svg += `
-      <rect
-        x="${left+duW}"
-        y="${y}"
-        width="${belumW}"
-        height="${h}"
-        rx="6"
-        fill="#D71920"
-      />
-    `;
+          <div
+            class="chart-school"
+            title="${esc(d.school)}"
+          >
+
+            <span class="chart-rank">
+              ${index + 1}
+            </span>
+
+            ${esc(d.school)}
+
+          </div>
 
 
-    svg += `
-      <text
-        x="${left+totalW+8}"
-        y="${y+h/2+4}"
-        fill="#071A9C"
-        font-size="11"
-        font-weight="800"
-      >
-        ${d.total}
-      </text>
-    `;
+          <div
+            class="chart-bar-area"
+            title="
+              ${esc(d.school)}
+              | Total: ${d.total}
+              | Sudah DU: ${d.du}
+              | Belum DU: ${d.belum}
+            "
+          >
 
 
-    svg += `
-      <title>
-        ${esc(d.school)}
-        | Pendaftar: ${d.total}
-        | Sudah DU: ${d.du}
-        | Belum DU: ${d.belum}
-      </title>
-    `;
-
-  });
+            <div
+              class="chart-bar-du"
+              style="
+                width:${duPercent}%;
+              "
+            ></div>
 
 
-  svg += `
-    </svg>
-  `;
+            ${
+              d.belum > 0
 
-  el.innerHTML = svg;
+              ?
+
+              `
+              <div
+                class="chart-bar-belum"
+                style="
+                  left:${duPercent}%;
+                  width:${belumPercent}%;
+                "
+              ></div>
+              `
+
+              :
+
+              ""
+            }
+
+
+          </div>
+
+
+          <div class="chart-total">
+
+            ${d.total}
+
+          </div>
+
+
+        </div>
+
+      `;
+
+    }
+  );
+
+
+  html +=
+    "</div>";
+
+
+  el.innerHTML =
+    html;
 
 }
 
 
-/* =====================================================
+/* =========================================================
    FILTER
-====================================================== */
+========================================================= */
 
 function currentRows() {
+
 
   const q =
     document
@@ -1865,6 +2440,7 @@ function currentRows() {
       .value
       .trim()
       .toLowerCase();
+
 
   const filter =
     document
@@ -1881,19 +2457,25 @@ function currentRows() {
   if(q) {
 
     arr =
-      arr.filter(d =>
+      arr.filter(
 
-        (
-          d.school +
-          " " +
-          d.bk +
-          " " +
-          d.phone +
-          " " +
-          d.mahasiswa
-        )
-        .toLowerCase()
-        .includes(q)
+        function(d) {
+
+          return (
+
+            d.school +
+            " " +
+            d.bk +
+            " " +
+            d.phone +
+            " " +
+            d.mahasiswa
+
+          )
+          .toLowerCase()
+          .includes(q);
+
+        }
 
       );
 
@@ -1916,9 +2498,16 @@ function currentRows() {
 
     arr =
       arr.filter(
-        d =>
-          d.total > 0 &&
-          d.du === d.total
+
+        function(d) {
+
+          return (
+            d.total > 0 &&
+            d.du === d.total
+          );
+
+        }
+
       );
 
   }
@@ -1930,7 +2519,13 @@ function currentRows() {
 
     arr =
       arr.filter(
-        d => d.belum > 0
+
+        function(d) {
+
+          return d.belum > 0;
+
+        }
+
       );
 
   }
@@ -1942,8 +2537,15 @@ function currentRows() {
 
     arr =
       arr.filter(
-        d =>
-          d.mahasiswa.trim() !== ""
+
+        function(d) {
+
+          return (
+            d.mahasiswa.trim() !== ""
+          );
+
+        }
+
       );
 
   }
@@ -1954,14 +2556,16 @@ function currentRows() {
 }
 
 
-/* =====================================================
-   RENDER TABLE
-====================================================== */
+/* =========================================================
+   TABLE
+========================================================= */
 
 function renderTable() {
 
+
   const arr =
     currentRows();
+
 
   const body =
     document.getElementById("tbody");
@@ -1969,107 +2573,151 @@ function renderTable() {
 
   body.innerHTML =
 
-    arr.map((d,i)=>{
+    arr.map(
 
-      const rate =
-        d.total
-        ? d.du/d.total*100
-        : 0;
+      function(d,i) {
 
 
-      const cls =
-        rate === 100
-        ? "full"
-        : "partial";
+        const rate =
+          d.total
+          ? (d.du / d.total) * 100
+          : 0;
 
 
-      return `
-
-        <tr>
-
-          <td>
-            <span class="rank">
-              ${i+1}
-            </span>
-          </td>
+        const cls =
+          rate === 100
+          ? "full"
+          : "partial";
 
 
-          <td class="school">
-            ${esc(d.school)}
-          </td>
+        return `
+
+          <tr>
 
 
-          <td class="num">
-            <b>
-              ${d.total}
-            </b>
-          </td>
+            <td>
+
+              <span class="rank">
+
+                ${i + 1}
+
+              </span>
+
+            </td>
 
 
-          <td class="num">
-            ${d.du}
-          </td>
+            <td class="school">
+
+              ${esc(d.school)}
+
+            </td>
 
 
-          <td class="num">
-            ${d.belum}
-          </td>
+            <td class="num">
+
+              <b>
+                ${d.total}
+              </b>
+
+            </td>
 
 
-          <td class="num">
+            <td class="num">
 
-            <span
-              class="badge ${cls}"
-            >
-              ${rate.toFixed(1)}%
-            </span>
+              ${d.du}
 
-          </td>
+            </td>
 
 
-          <td>
-            ${
-              d.bk
-              ? esc(d.bk)
-              : '<span class="empty">-</span>'
-            }
-          </td>
+            <td class="num">
+
+              ${d.belum}
+
+            </td>
 
 
-          <td>
-            ${
-              d.phone
-              ? esc(d.phone)
-              : '<span class="empty">-</span>'
-            }
-          </td>
+            <td class="num">
+
+              <span
+                class="badge ${cls}"
+              >
+
+                ${rate.toFixed(1)}%
+
+              </span>
+
+            </td>
 
 
-          <td class="mahasiswa">
+            <td>
 
-            ${
-              d.mahasiswa
-              ? esc(d.mahasiswa)
-              : '<span class="empty">
-                   Belum ada data
-                 </span>'
-            }
+              ${
+                d.bk
 
-          </td>
+                ?
 
-        </tr>
+                esc(d.bk)
 
-      `;
+                :
 
-    })
+                '<span class="empty">-</span>'
+              }
+
+            </td>
+
+
+            <td>
+
+              ${
+                d.phone
+
+                ?
+
+                esc(d.phone)
+
+                :
+
+                '<span class="empty">-</span>'
+              }
+
+            </td>
+
+
+            <td class="mahasiswa">
+
+              ${
+                d.mahasiswa
+
+                ?
+
+                esc(d.mahasiswa)
+
+                :
+
+                '<span class="empty">
+                  Belum ada data
+                </span>'
+              }
+
+            </td>
+
+
+          </tr>
+
+        `;
+
+      }
+
+    )
+
     .join("");
 
 }
 
 
-/* =====================================================
-   EVENT
-====================================================== */
+/* =========================================================
+   EVENT SEARCH
+========================================================= */
 
 document
   .getElementById("search")
@@ -2079,6 +2727,10 @@ document
   );
 
 
+/* =========================================================
+   EVENT FILTER
+========================================================= */
+
 document
   .getElementById("filter")
   .addEventListener(
@@ -2087,29 +2739,41 @@ document
   );
 
 
-window.addEventListener(
-  "resize",
-  ()=>{
-    clearTimeout(window.__r);
+/* =========================================================
+   RESPONSIVE CHART
+========================================================= */
 
-    window.__r =
+window.addEventListener(
+
+  "resize",
+
+  function() {
+
+    clearTimeout(
+      window.__chartResize
+    );
+
+    window.__chartResize =
       setTimeout(
         renderChart,
-        130
+        150
       );
+
   }
+
 );
 
 
-/* =====================================================
+/* =========================================================
    INITIALIZE
-====================================================== */
+========================================================= */
 
 renderChart();
 
 renderTable();
 
 </script>
+
 
 </body>
 </html>
