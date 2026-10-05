@@ -604,10 +604,10 @@ body {
   background:
     conic-gradient(
       #071A9C
-      0 64%,
+      0 var(--du-percent, 0%),
 
       #F2D7DA
-      64% 100%
+      var(--du-percent, 0%) 100%
     );
 
   box-shadow:
@@ -1111,6 +1111,7 @@ tbody tr:hover td {
 <body>
 
 
+<!-- Data summary is calculated automatically from const data. -->
 <!-- =========================================================
      HERO
 ========================================================= -->
@@ -1128,7 +1129,7 @@ tbody tr:hover td {
     </h1>
 
     <p>
-      Rekapitulasi berdasarkan Asal Sekolah • Total 236 Pendaftar
+      Rekapitulasi berdasarkan Asal Sekolah • Total <span id="heroTotal">0</span> Pendaftar
     </p>
 
   </div>
@@ -1152,9 +1153,7 @@ tbody tr:hover td {
       Total Pendaftar
     </div>
 
-    <div class="kpi-value">
-      236
-    </div>
+    <div class="kpi-value" id="kpiTotal">0</div>
 
     <div class="kpi-note">
       Total seluruh pendaftar
@@ -1169,13 +1168,9 @@ tbody tr:hover td {
       Sudah DU
     </div>
 
-    <div class="kpi-value">
-      151
-    </div>
+    <div class="kpi-value" id="kpiDU">0</div>
 
-    <div class="kpi-note">
-      64.0% conversion rate
-    </div>
+    <div class="kpi-note" id="kpiDUNote">0.0% conversion rate</div>
 
   </div>
 
@@ -1186,13 +1181,9 @@ tbody tr:hover td {
       Belum DU
     </div>
 
-    <div class="kpi-value">
-      85
-    </div>
+    <div class="kpi-value" id="kpiBelum">0</div>
 
-    <div class="kpi-note">
-      36.0% dari total pendaftar
-    </div>
+    <div class="kpi-note" id="kpiBelumNote">0.0% dari total pendaftar</div>
 
   </div>
 
@@ -1203,9 +1194,7 @@ tbody tr:hover td {
       Asal Sekolah
     </div>
 
-    <div class="kpi-value">
-      60
-    </div>
+    <div class="kpi-value" id="kpiSekolah">0</div>
 
     <div class="kpi-note">
       Sekolah asal pendaftar
@@ -1324,9 +1313,7 @@ tbody tr:hover td {
 
     <div class="donut-text">
 
-      <strong>
-        64.0%
-      </strong>
+      <strong id="donutPercent">0.0%</strong>
 
       <span>
         Sudah DU
@@ -1342,9 +1329,7 @@ tbody tr:hover td {
 
     <div class="mini">
 
-      <b>
-        29
-      </b>
+      <b id="miniFull">0</b>
 
       <span>
         Sekolah dengan DU 100%
@@ -1355,9 +1340,7 @@ tbody tr:hover td {
 
     <div class="mini">
 
-      <b>
-        31
-      </b>
+      <b id="miniPending">0</b>
 
       <span>
         Sekolah masih ada Belum DU
@@ -1368,9 +1351,7 @@ tbody tr:hover td {
 
     <div class="mini">
 
-      <b>
-        3.9
-      </b>
+      <b id="miniAverage">0.0</b>
 
       <span>
         Rata-rata pendaftar/sekolah
@@ -1381,9 +1362,7 @@ tbody tr:hover td {
 
     <div class="mini">
 
-      <b>
-        85
-      </b>
+      <b id="miniFollowup">0</b>
 
       <span>
         Potensi follow-up DU
@@ -1530,7 +1509,7 @@ tbody tr:hover td {
 
   Dashboard PMB 2026
   • UDB Biru • Merah • Emas
-  • Total 236 Pendaftar
+  • Total <span id="footerTotal">0</span> Pendaftar
 
 </div>
 
@@ -2239,6 +2218,93 @@ const data = [
 
 
 /* =========================================================
+   AUTO CALCULATE SUMMARY
+========================================================= */
+
+function updateSummary() {
+
+  const totalPendaftar = data.reduce(
+    (sum, d) => sum + Number(d.total || 0),
+    0
+  );
+
+  const totalDU = data.reduce(
+    (sum, d) => sum + Number(d.du || 0),
+    0
+  );
+
+  const totalBelum = data.reduce(
+    (sum, d) => sum + Number(d.belum || 0),
+    0
+  );
+
+  const jumlahSekolah = data.length;
+
+  const rateDU = totalPendaftar
+    ? (totalDU / totalPendaftar) * 100
+    : 0;
+
+  const rateBelum = totalPendaftar
+    ? (totalBelum / totalPendaftar) * 100
+    : 0;
+
+  const sekolahFull = data.filter(
+    d => Number(d.total) > 0 && Number(d.du) === Number(d.total)
+  ).length;
+
+  const sekolahPending = data.filter(
+    d => Number(d.belum) > 0
+  ).length;
+
+  const rataRata = jumlahSekolah
+    ? totalPendaftar / jumlahSekolah
+    : 0;
+
+  // KPI
+  document.getElementById("heroTotal").textContent = totalPendaftar;
+  document.getElementById("kpiTotal").textContent = totalPendaftar;
+  document.getElementById("kpiDU").textContent = totalDU;
+  document.getElementById("kpiDUNote").textContent =
+    `${rateDU.toFixed(1)}% conversion rate`;
+
+  document.getElementById("kpiBelum").textContent = totalBelum;
+  document.getElementById("kpiBelumNote").textContent =
+    `${rateBelum.toFixed(1)}% dari total pendaftar`;
+
+  document.getElementById("kpiSekolah").textContent = jumlahSekolah;
+
+  // Donut
+  document.getElementById("donutPercent").textContent =
+    `${rateDU.toFixed(1)}%`;
+
+  document.querySelector(".donut").style.setProperty(
+    "--du-percent",
+    `${rateDU}%`
+  );
+
+  // Mini stats
+  document.getElementById("miniFull").textContent = sekolahFull;
+  document.getElementById("miniPending").textContent = sekolahPending;
+  document.getElementById("miniAverage").textContent =
+    rataRata.toFixed(1);
+  document.getElementById("miniFollowup").textContent = totalBelum;
+
+  // Footer
+  document.getElementById("footerTotal").textContent = totalPendaftar;
+
+  // Update chart description dynamically
+  const chartDescription = document.querySelector(
+    ".panel .panel-head p"
+  );
+
+  if (chartDescription) {
+    chartDescription.textContent =
+      "Menampilkan 10 sekolah dengan jumlah pendaftar terbanyak. Biru = Sudah DU, Merah = Belum DU.";
+  }
+}
+
+
+/* =========================================================
    ESCAPE HTML
 ========================================================= */
 
@@ -2768,6 +2834,7 @@ window.addEventListener(
    INITIALIZE
 ========================================================= */
 
+updateSummary();
 renderChart();
 
 renderTable();
